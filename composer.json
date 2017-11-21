@@ -1,0 +1,48 @@
+{
+    "name": "manzoli2122/AAL",
+    "description": "Este pacote fornece uma forma de adicionar Perfil baseado em Permissão para Laravel, AAL - Autenticação e Autorização para Laravel",
+    "keywords": ["laravel","illuminate","auth","perfil","acl","permissao"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Bruno Manzoli do Nascimento",
+            "email": "manzoli2122@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0",
+        "illuminate/console": "~5.0",
+        "illuminate/support": "~5.0",
+        "illuminate/cache": "~5.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.1",
+        "mockery/mockery": "dev-master",
+        "illuminate/database": "~5.0",
+        "sami/sami": "dev-master"
+    },
+    "autoload": {
+        "classmap": [
+            "src/comandos"
+        ],
+        "psr-4": {
+            "Manzoli2122\\AAL\\": "src/AAL/"
+        }
+    },
+    "extra":{
+        "laravel":{
+            "providers":[
+                "Manzoli2122\\AAL\\AALServiceProvider"
+            ],
+            "aliases":{
+                "AAL": "Manzoli2122\\AAL\\AALFacade"
+            }
+        }
+    },
+    "autoload-dev": {
+        "classmap": [
+            "tests/Middleware/MiddlewareTest.php"
+        ]
+    },
+    "minimum-stability": "dev"
+}
