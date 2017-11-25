@@ -3,8 +3,8 @@
 namespace  Manzoli2122\AAL\Http\Controllers;
 
 use Illuminate\Http\Request;
-//use App\Modules\Admin\Models\Permissao;
-//use App\Modules\Admin\Models\Perfil;  
+use Manzoli2122\AAL\Models\Permissao;
+use Manzoli2122\AAL\Models\Perfil;  
 
 class PermissaoController extends StandardController
 {

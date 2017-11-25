@@ -19,14 +19,14 @@ class AALServiceProvider extends ServiceProvider
             __DIR__.'/../config/config.php' =>  config_path('aal.php'), 
         ]);
 
+        $this->mapWebRoutes();
+        
         // Register commands
         $this->commands('command.aal.migration');
 
         // Register blade directives
         $this->bladeDirectives();
 
-
-        $this->loadRoutesFrom(__DIR__.'/Http/routes.php');
 
 
         $this->loadViewsFrom(__DIR__.'/Views', 'autorizacao');
@@ -41,6 +41,13 @@ class AALServiceProvider extends ServiceProvider
 
    
 
+
+    private function mapWebRoutes()
+    {        
+        Route::middleware('web')
+                ->namespace($this->namespace)
+                ->group(__DIR__.'/Http/routes.php');
+    }
 
 
 

@@ -39,7 +39,7 @@ use Illuminate\Support\Facades\Route;
 
         
 
-        //Route::get('/forbidden', 'PainelController@forbidden')->name('forbidden');
+        
         Route::get('/', 'AutorizacaoController@index')->name('admin');
     
     

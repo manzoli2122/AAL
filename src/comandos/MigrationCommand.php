@@ -62,12 +62,13 @@ class MigrationCommand extends Command
     
     protected function createMigration($perfisTable, $perfilUsuarioTable, $permissoesTable, $permissaoPerfilTable)
     {
-        $migrationFile = base_path("/database/migrations")."/".date('Y_m_d_His')."_aal_setup_tables.php";
+        $migrationFile = base_path("/database/migrations")."/".date('Y_m_d_His')."_aal_setup_perfil_permissao_tables.php";
 
         $usuarioModelName = Config::get('auth.providers.users.model');
-        $usuarioModel = new $UsuarioModelName();
-        $usuarioTable = $UsuarioModel->getTable();
-        $usuarioKeyName = $UsuarioModel->getKeyName();
+
+        $usuarioModel = new $usuarioModelName();
+        $usuarioTable = $usuarioModel->getTable();
+        $usuarioKeyName = $usuarioModel->getKeyName();
 
         $data = compact('perfisTable', 'perfilUsuarioTable', 'permissoesTable', 'permissaoPerfilTable', 'usuarioTable', 'usuarioKeyName');
 

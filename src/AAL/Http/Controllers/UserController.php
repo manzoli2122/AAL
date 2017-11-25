@@ -4,10 +4,10 @@ namespace  Manzoli2122\AAL\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Core\User;
-use App\Modules\Admin\Models\Perfil;
-use App\Http\Requests\Painel\UserFormRequest;
+use Manzoli2122\AAL\Models\Perfil;
 use Auth;
 use Carbon\Carbon;
+
 class UserController extends Controller
 {
     
@@ -19,7 +19,6 @@ class UserController extends Controller
         $this->user = $user;
         
         $this->middleware('can:usuarios');
-        $this->middleware('can:usuarios_editar')->only(['edit' , 'update']);
         $this->middleware('can:usuarios_perfis')->only(['perfis' , 'perfisAdd' , 'perfilAddUsuarios' , 'deletePerfil']);
     }
 
@@ -37,50 +36,7 @@ class UserController extends Controller
         return view('admin::usuarios.index', compact('users', 'title'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('admin::usuarios.create-edit');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(UserFormRequest $request)
-    {
-        $dataUser = $request->all();
-        $dataUser['password'] = bcrypt($dataUser['password']);
-
-        if($request->hasFile('image')){
-            $image = $request->file('image');
-           
-            $nameImage = uniqid(date('YmdHis')).'.'. $image->getClientOriginalExtension();
-            $upload = $image->storeAs('users', $nameImage );
-            if($upload){
-                $dataUser['image'] = $nameImage;
-            }
-            else 
-                return redirect('painel/usuarios/create')->withErrors(['errors' =>'Erro no upload'])->withInput();
-        }
-
-
-        $insert = $this->user->create($dataUser);
-        
-        if($insert){
-            return redirect()->route('users.index')->with(['success' => 'Cadastro realizado com sucesso']);
-        }
-        else {
-            return redirect()->route('users.create')->withErrors(['errors' =>'Erro no Cadastro'])->withInput();
-        }
-    }
-
+   
     /**
      * Display the specified resource.
      *
@@ -93,81 +49,12 @@ class UserController extends Controller
         return view('admin::usuarios.show', compact('user'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        $user = $this->user->find($id);
-        return view('admin::usuarios.create-edit', compact('user'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UserFormRequest $request, $id)
-    {
-        $dataUser = $request->all();        
-        $user = $this->user->find($id);
-        $dataUser['password'] = bcrypt($dataUser['password']);     
-        
-        if( $request->hasFile('image')){
-            $image =  $request->file('image'); 
-            if(!$user->image ){
-                $user->image = uniqid(date('YmdHis')).'.'. $image->getClientOriginalExtension();                 
-            }
-            $upload = $image->storeAs('users', $user->image );            
-            $dataUser['image'] = $user->image;
-            if(!$upload){
-                return redirect()->route('users.edit' , ['id'=> $id])->withErrors(['errors' =>'Erro no upload'])->withInput();
-            }
-        }
-
-        $update = $user->update($dataUser);        
-        
-        if($update){
-            return redirect()->route('users.index')->with(['success' => 'Alteração realizada com sucesso']);
-        }        
-        else {
-            return redirect()->route('users.edit' , ['id'=> $id])->withErrors(['errors' =>'Erro no Editar'])->withInput();
-        }
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        $user = $this->user->find($id);
-        $delete = $user->delete();
-        if($delete){
-            return redirect()->route('users.index');
-        }
-        else{
-            return  redirect()->route('users.show',['id' => $id])->withErrors(['errors' => 'Falha ao Deletar']);
-        }
-    }
+    
 
 
 
 
 
-     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function pesquisar(Request $request)
     {
         //dd($this->request);

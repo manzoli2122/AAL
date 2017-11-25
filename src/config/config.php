@@ -4,7 +4,7 @@
 return [
 
    
-    'perfil' => 'App\Perfil',
+    //'perfil' => 'App\Perfil',
 
    
     'perfis_table' => 'perfis',
@@ -27,7 +27,7 @@ return [
     //'usuario_foreign_key' => 'user_id',
 
     
-    'permissao' => 'App\Permissao',
+    //'permissao' => 'App\Permissao',
 
     
     
