@@ -13,7 +13,7 @@ trait AALPermissaoTrait
 
     public function perfis()
     {
-        return $this->belongsToMany( 'Manzoli2122\AAL\Models\Perfil' , Config::get('aal.permissao_perfil_table'), Config::get('aal.permissao_foreign_key'), Config::get('aal.perfil_foreign_key'));
+        return $this->belongsToMany( 'Manzoli2122\AAL\Models\Perfil' , 'permissao_perfils' ,'permissao_id', 'perfil_id' );
     }
 
    
