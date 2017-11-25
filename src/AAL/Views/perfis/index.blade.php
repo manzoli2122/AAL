@@ -19,14 +19,14 @@
             <ul class="nav nav-pills flex-column">
                
 
-				@can('usuarios-cadastrar')
+				
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('perfis.create') }}">
                             
                             Cadastrar Novo Perfil
                         </a>
                     </li>
-				@endcan
+				
 				
             </ul>
         </div>  

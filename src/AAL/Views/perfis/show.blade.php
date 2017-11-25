@@ -8,31 +8,28 @@
 		<div class="col-sm-3 col-md-2 menu-lateral-salao " >
             <ul class="nav nav-pills flex-column">
                
-				@can('usuarios-cadastrar')
+				
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route("perfis.usuarios", $model->id) }}">
                             
                             Usuários
                         </a>
                     </li>
-				@endcan
-				@can('usuarios-apagados')
+				
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route("perfis.permissoes", $model->id) }}">
                             
                             Permissões
                         </a>
                     </li>
-				@endcan
-
-                @can('usuarios-apagados')
+				
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route("perfis.edit", $model->id) }}">
                             
                             Editar
                         </a>
                     </li>
-				@endcan
+				
             </ul>
         </div>  
 @endsection

@@ -20,14 +20,14 @@
             <ul class="nav nav-pills flex-column">
                
 
-				@can('usuarios-cadastrar')
+				
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('perfis.permissoes.cadastrar', $model->id ) }}">
                             
                             Adicionar Permissão
                         </a>
                     </li>
-				@endcan
+				
 				
             </ul>
         </div>  
