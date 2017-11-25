@@ -6,8 +6,7 @@
 
 @section('menuLateral')
 		<div class="col-sm-3 col-md-2 menu-lateral-salao " >
-            <ul class="nav nav-pills flex-column">
-               
+            <ul class="nav nav-pills flex-column">             
 				
 				
                     <li class="nav-item">

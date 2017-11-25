@@ -30,9 +30,9 @@ class PermissaoController extends StandardController
     public function perfis($id)
     {        
         $model = $this->model->find($id);
-        $perfis = $model->perfis()->paginate($this->totalPage);
-        $title = "Pperfis com permissão {$model->nome}";
-        return view("{$this->view}.perfis", compact('model','perfis','title'));
+        //$perfis = $model->perfis()->paginate($this->totalPage);
+        //$title = "Pperfis com permissão {$model->nome}";
+        return view("{$this->view}.perfis", compact('model'));
     }
 
  
@@ -54,7 +54,7 @@ class PermissaoController extends StandardController
     public function deletePerfil($id,$perfilId)
     {        
         $model = $this->model->find($id);        
-        $model->perfis()->detach($perfilId); 
+        $model->detachPerfil($perfilId); 
         return redirect()->route('permissoes.perfis' ,$id)->with(['success' => 'Perfil Removido com sucesso']);
     }
 
@@ -63,7 +63,7 @@ class PermissaoController extends StandardController
     public function perfilAddPermissao(Request $request , $id)
     {        
         $model = $this->model->find($id);        
-        $model->perfis()->attach($request->get('perfis'));            
+        $model->attachPerfil($request->get('perfis'));            
         return redirect()->route('permissoes.perfis' ,$id)->with(['success' => 'Perfis vinculados com sucesso']);
     }
 

@@ -70,7 +70,7 @@
 					
 				</tr>
 
-				@forelse($perfis as $perfil)
+				@forelse($model->perfis as $perfil)
 					<tr>
 						<td>{{$perfil->nome}}</td>
 						
@@ -82,11 +82,7 @@
                    
                 @endforelse
 			</table>
-			@if(isset($dataForm))
-				{!! $perfis->appends($dataForm)->links() !!}
-			@else
-				{!! $perfis->links() !!}
-			@endif
+			
 		</div><!--Content Dinâmico-->
 
 
