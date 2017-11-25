@@ -72,7 +72,7 @@ class StandardController extends BaseController
     public function edit($id)
     {
         $model = $this->model->find($id);
-        return view("{$this->view}.create-edit");
+        return view("{$this->view}.create-edit", compact('model'));
     }
 
 
