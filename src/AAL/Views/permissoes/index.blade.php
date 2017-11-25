@@ -14,17 +14,12 @@
 @section('menuLateral')
 		<div class="col-sm-3 col-md-2 menu-lateral-salao " >
             <ul class="nav nav-pills flex-column">
-               
-
-				
+			
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('permissoes.create') }}">
-                            
-                            Cadastrar Novo Permissão
+                        <a class="nav-link btn-danger" style="color:white;" href="{{ route('permissoes.create') }}">                            
+                            <b>Cadastrar Permissão</b>
                         </a>
                     </li>
-				
-				
             </ul>
         </div>  
 @endsection
@@ -35,7 +30,7 @@
 
 
 <div class="title-pg">
-			<h1 class="title-pg">Listagem das Permissões </h1>
+			<h1 class="title-pg text-center">Listagem das Permissões </h1>
 		</div>
 
 		<div class="content-din bg-white">

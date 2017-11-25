@@ -24,7 +24,7 @@ h1 {
  */
 
 .menu-lateral-salao {
-  background: palegoldenrod;
+  background: #0e0e0e;
   position: unset;
   z-index: 1000;
   bottom: 0;
@@ -82,7 +82,7 @@ h1 {
 @media (min-width: 580px) {
   
   .menu-lateral-salao {
-    background: palegoldenrod;
+    background: #0e0e0e;
     position: fixed;
     z-index: 1000;
     padding: 20px 0;

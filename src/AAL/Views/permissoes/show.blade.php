@@ -11,14 +11,14 @@
 				
 				
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route("permissoes.perfis", $model->id) }}">                            
-                            Perfis
+                        <a class="nav-link  btn-danger" href="{{ route("permissoes.perfis", $model->id) }}">                            
+                            <b>Perfis</b>
                         </a>
                     </li>
 				
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route("permissoes.edit", $model->id) }}">                            
-                            Editar
+                        <a class="nav-link  btn-danger" href="{{ route("permissoes.edit", $model->id) }}">                            
+                            <b>Editar</b>
                         </a>
                     </li>
 				

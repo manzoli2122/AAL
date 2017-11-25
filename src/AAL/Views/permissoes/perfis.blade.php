@@ -26,9 +26,9 @@
 
 				
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('permissoes.perfis.cadastrar', $model->id ) }}">
+                        <a class="nav-link btn-danger" href="{{route('permissoes.perfis.cadastrar', $model->id ) }}">
                             
-                            Adicionar Perfil
+                            <b>Adicionar Perfil</b>
                         </a>
                     </li>
 				
