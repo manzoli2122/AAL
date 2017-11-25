@@ -3,11 +3,11 @@ use Illuminate\Support\Facades\Route;
 
     Route::group(['prefix' => 'autorizacao', 'middleware' => 'auth' ], function(){
 
-       // Route::any('perfis/{id}/permissoes/pesquisar', 'PerfilController@pesquisarPermissoes')->name('perfis.permissoes.pesquisar');
-        //Route::get('perfis/{id}/permissoes/{permissaoId}/delete', 'PerfilController@deletePermissao')->name('perfis.permissoes.delete');
-       // Route::post('perfis/{id}/permissoes/cadastrar', 'PerfilController@permissoesAddPerfil')->name('perfis.permissoes.add');
-       // Route::get('perfis/{id}/permissoes/cadastrar', 'PerfilController@permissoesAdd')->name('perfis.permissoes.cadastrar');
-       // Route::get('perfis/{id}/permissoes', 'PerfilController@permissoes')->name('perfis.permissoes');
+        Route::any('perfis/{id}/permissoes/pesquisar', 'PerfilController@pesquisarPermissoes')->name('perfis.permissoes.pesquisar');
+        Route::get('perfis/{id}/permissoes/{permissaoId}/delete', 'PerfilController@deletePermissao')->name('perfis.permissoes.delete');
+        Route::post('perfis/{id}/permissoes/cadastrar', 'PerfilController@permissoesAddPerfil')->name('perfis.permissoes.add');
+        Route::get('perfis/{id}/permissoes/cadastrar', 'PerfilController@permissoesAdd')->name('perfis.permissoes.cadastrar');
+        Route::get('perfis/{id}/permissoes', 'PerfilController@permissoes')->name('perfis.permissoes');
 
         Route::any('perfis/{id}/usuarios/pesquisar', 'PerfilController@pesquisarUsuarios')->name('perfis.usuarios.pesquisar');
         Route::get('perfis/{id}/usuarios/{userId}/delete', 'PerfilController@deleteUser')->name('perfis.usuarios.delete');
