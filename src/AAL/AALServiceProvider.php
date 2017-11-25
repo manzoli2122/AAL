@@ -2,7 +2,7 @@
 
 namespace Manzoli2122\AAL;
 
-
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
 class AALServiceProvider extends ServiceProvider
