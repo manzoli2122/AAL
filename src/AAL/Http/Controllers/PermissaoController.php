@@ -35,7 +35,7 @@ class PermissaoController extends StandardController
         return view("{$this->view}.perfis", compact('model','perfis','title'));
     }
 
-
+ 
 
 
     public function perfisAdd($id)

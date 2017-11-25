@@ -11,10 +11,19 @@ interface AALPermissaoInterface
 
     public function attachPerfil($perfil);
     
+
+
+
+
+    
        
     public function detachPerfil($perfil);
     
         
+
+
+
+
     public function attachPerfis($perfis);
     
        

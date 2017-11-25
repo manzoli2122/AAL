@@ -32,4 +32,56 @@ trait AALPermissaoTrait
             return true;
         });
     }
+
+
+
+    
+
+    public function attachPerfil($perfil){
+        
+        if(is_object($perfil)) {
+            $perfil = $perfil->getKey();
+        }
+        if(is_array($perfil)) {
+            return $this->attachPerfis($perfil);
+        }
+        $this->perfis()->attach($perfil);
+
+    }
+    
+       
+    public function detachPerfil($perfil){
+        if (is_object($perfil)) {
+            $perfil = $perfil->getKey();
+        }
+        if (is_array($perfil)) {
+            return $this->detachPerfis($perfil);
+        }
+        $this->perfis()->detach($perfil);
+    }
+    
+
+
+
+
+        
+    public function attachPerfis($perfis){
+        foreach ($perfis as $perfil) {
+            $this->attachPerfil($perfil);
+        }
+    }
+    
+       
+    public function detachPerfis($perfis=null){
+        if (!$perfis) $perfis = $this->perfis()->get();
+        foreach ($perfis as $perfil) {
+            $this->detachRole($perfil);
+        }
+    }
+
+
+
+
+
+
 }

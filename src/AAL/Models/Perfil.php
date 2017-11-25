@@ -37,13 +37,13 @@ class Perfil extends Model implements AALPerfilInterface
             ];
     }
 
-
+/*
     public function usuarios()
     {        
         return $this->belongsToMany( 'App\Core\User' , 'perfils_users', 'perfil_id' , 'user_id');
     }
 
-
+*/
     public function permissoes()
     {        
         return $this->belongsToMany( 'App\Modules\Admin\Models\Permissao' , 'permissao_perfils' , 'perfil_id', 'permissao_id');
