@@ -1,6 +1,6 @@
 <?php
 
-namespace  App\Modules\Admin\Http\Controllers;
+namespace  Manzoli2122\AAL\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Core\User;

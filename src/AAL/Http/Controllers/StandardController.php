@@ -1,5 +1,5 @@
 <?php
-namespace App\Modules\Admin\Http\Controllers;
+namespace Manzoli2122\AAL\Http\Controllers;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;

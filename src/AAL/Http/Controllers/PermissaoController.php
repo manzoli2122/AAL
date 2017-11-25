@@ -1,10 +1,10 @@
 <?php
 
-namespace  App\Modules\Admin\Http\Controllers;
+namespace  Manzoli2122\AAL\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Modules\Admin\Models\Permissao;
-use App\Modules\Admin\Models\Perfil;  
+//use App\Modules\Admin\Models\Permissao;
+//use App\Modules\Admin\Models\Perfil;  
 
 class PermissaoController extends StandardController
 {

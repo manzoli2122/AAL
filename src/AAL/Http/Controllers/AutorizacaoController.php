@@ -1,10 +1,10 @@
 <?php
 
-namespace  App\Modules\Admin\Http\Controllers;
+namespace  Manzoli2122\AAL\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class AdminController extends Controller
+class AutorizacaoController extends Controller
 {
  
 
@@ -16,7 +16,7 @@ class AdminController extends Controller
 
     public function index()
     {
-        return view("admin::index");
+        return view("autorizacao::index");
     }
         
 }
