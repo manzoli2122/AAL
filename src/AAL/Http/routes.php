@@ -9,13 +9,13 @@ use Illuminate\Support\Facades\Route;
        // Route::get('perfis/{id}/permissoes/cadastrar', 'PerfilController@permissoesAdd')->name('perfis.permissoes.cadastrar');
        // Route::get('perfis/{id}/permissoes', 'PerfilController@permissoes')->name('perfis.permissoes');
 
-      //  Route::any('perfis/{id}/usuarios/pesquisar', 'PerfilController@pesquisarUsuarios')->name('perfis.usuarios.pesquisar');
-       // Route::get('perfis/{id}/usuarios/{userId}/delete', 'PerfilController@deleteUser')->name('perfis.usuarios.delete');
-      //  Route::post('perfis/{id}/usuarios/cadastrar', 'PerfilController@usuariosAddPerfil')->name('perfis.usuarios.add');
-      //  Route::get('perfis/{id}/usuarios/cadastrar', 'PerfilController@usuariosAdd')->name('perfis.usuarios.cadastrar');
-      //  Route::get('perfis/{id}/usuarios', 'PerfilController@usuarios')->name('perfis.usuarios');
-      //  Route::any('perfis/pesquisar', 'PerfilController@pesquisar')->name('perfis.pesquisar');
-       // Route::resource('perfis', 'PerfilController');
+        Route::any('perfis/{id}/usuarios/pesquisar', 'PerfilController@pesquisarUsuarios')->name('perfis.usuarios.pesquisar');
+        Route::get('perfis/{id}/usuarios/{userId}/delete', 'PerfilController@deleteUser')->name('perfis.usuarios.delete');
+        Route::post('perfis/{id}/usuarios/cadastrar', 'PerfilController@usuariosAddPerfil')->name('perfis.usuarios.add');
+        Route::get('perfis/{id}/usuarios/cadastrar', 'PerfilController@usuariosAdd')->name('perfis.usuarios.cadastrar');
+        Route::get('perfis/{id}/usuarios', 'PerfilController@usuarios')->name('perfis.usuarios');
+        Route::any('perfis/pesquisar', 'PerfilController@pesquisar')->name('perfis.pesquisar');
+        Route::resource('perfis', 'PerfilController');
 
 
         Route::any('permissoes/{id}/perfis/pesquisar', 'PermissaoController@pesquisarPerfis')->name('permissoes.perfis.pesquisar');

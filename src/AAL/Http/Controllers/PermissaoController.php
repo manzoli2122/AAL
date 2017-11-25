@@ -12,7 +12,7 @@ class PermissaoController extends StandardController
 
     protected $model;    
     protected $name = "Permissao";    
-    protected $view = "admin::permissoes";    
+    protected $view = "autorizacao::permissoes";    
     protected $route = "permissoes";
     
     

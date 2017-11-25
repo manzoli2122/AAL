@@ -11,6 +11,7 @@
 		<!--Fonts-->
 		<link rel="stylesheet" href="{{ url('vendor/autorizacao/css/font-awesome.min.css')}} ">
 		
+		<link rel="stylesheet" href="{{ url('vendor/autorizacao/css/app.css')}}">
 		
 		@stack('head-scripts')		
 		<!--Favicon-->
@@ -28,32 +29,28 @@
 			
         	<div class="collapse navbar-collapse" id="navbarsExampleDefault">
           		<ul class="navbar-nav mr-auto">
-					@can('usuarios')
+					
 						<li class="nav-item ">
 							<a class="nav-link active" href="{{ route('users.index') }}"> <span class="sr-only">(current)</span>
 								<i class="fa fa-id-card" aria-hidden="true"></i>
 								Usuários
 							</a>
 						</li>
-					@endcan
-
-					@can('perfis')
+					
 						<li class="nav-item ">
 							<a class="nav-link active" href="{{ route('perfis.index')}}"> <span class="sr-only">(current)</span>
 								<i class="fa fa-id-card" aria-hidden="true"></i>
 								Perfil
 							</a>
 						</li>					
-					@endcan
-
-					@can('permissoes')
+					
 						<li class="nav-item ">
 							<a class="nav-link active" href="{{ route('permissoes.index')}}"> <span class="sr-only">(current)</span>
 								<i class="fa fa-id-card" aria-hidden="true"></i>
 								Permissões
 							</a>
 						</li>					
-					@endcan
+					
 
 				</ul>	
 

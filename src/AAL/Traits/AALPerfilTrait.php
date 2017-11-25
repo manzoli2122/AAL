@@ -150,11 +150,9 @@ trait AALPerfilTrait
         if (is_object($permissao)) {
             $permissao = $permissao->getKey();
         }
-
         if (is_array($permissao)) {
             return $this->attachPermissoes($permissao);
         }
-
         $this->permissoes()->attach($permissao);
     }
 
@@ -167,11 +165,9 @@ trait AALPerfilTrait
         if (is_object($permissao)) {
             $permissao = $permissao->getKey();
         }
-
         if (is_array($permissao)) {
             return $this->detachPermissoes($permissao);
         }
-
         $this->permissoes()->detach($permissao);
     }
 
@@ -192,9 +188,64 @@ trait AALPerfilTrait
     public function detachPermissoes($permissoes = null)
     {
         if (!$permissoes) $permissoes = $this->permissoes()->get();
-
         foreach ($permissoes as $permissao) {
             $this->detachPermissao($permissao);
         }
     }
+
+
+
+
+    
+    public function attachUsuario($usuario)
+    {
+        if (is_object($usuario)) {
+            $usuario = $usuario->getKey();
+        }
+        if (is_array($usuario)) {
+            return $this->attachUsuarios($usuario);
+        }
+        $this->usuarios()->attach($usuario);
+    }
+
+    
+
+
+
+    public function detachUsuario($usuario)
+    {
+        if (is_object($usuario)) {
+            $usuario = $usuario->getKey();
+        }
+        if (is_array($usuario)) {
+            return $this->detachUsuarios($usuario);
+        }
+        $this->usuarios()->detach($usuario);
+    }
+
+   
+
+
+    
+    public function attachUsuarios($usuarioa)
+    {
+        foreach ($usuarios as $usuario) {
+            $this->attachUsuario($usuario);
+        }
+    }
+
+    
+
+
+    public function detachUsuarios($usuarios = null)
+    {
+        if (!$usuarios) $usuarios = $this->permissoes()->get();
+        foreach ($usuarios as $usuario) {
+            $this->detachUsuario($usuario);
+        }
+    }
+
+
+
+
 }

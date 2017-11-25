@@ -1,4 +1,4 @@
-@extends('admin::templates.templateAdminLateral')
+@extends('autorizacao::templates.templateAdminLateral')
 
 	
 

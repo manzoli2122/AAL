@@ -57,7 +57,7 @@ class StandardController extends BaseController
     public function show($id)
     {
         $model = $this->model->find($id);
-        return view("{$this->view}.show");
+        return view("{$this->view}.show", compact('model'));
     }
 
 

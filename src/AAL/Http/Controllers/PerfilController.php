@@ -12,15 +12,15 @@ class PerfilController extends StandardController
  
         protected $model;    
         protected $name = "Perfil";    
-        protected $view = "admin::perfis";    
+        protected $view = "autorizacao::perfis";    
         protected $route = "perfis";
         
         
         public function __construct(Perfil $perfil){
             $this->model = $perfil;
 
-            $this->middleware('can:perfis');
-            $this->middleware('can:perfis_editar')->only(['edit' , 'update']);           
+            //$this->middleware('can:perfis');
+            //$this->middleware('can:perfis_editar')->only(['edit' , 'update']);           
             
         }
 
