@@ -24,7 +24,7 @@ return [
     'perfil_usuario_table' => 'perfis_users',
 
     
-    'usuario_foreign_key' => 'user_id',
+    //'usuario_foreign_key' => 'user_id',
 
     
     'permissao' => 'App\Permissao',

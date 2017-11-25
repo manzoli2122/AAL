@@ -10,12 +10,13 @@ class AALServiceProvider extends ServiceProvider
     
     protected $defer = false;
 
+    protected $namespace = 'Manzoli2122\AAL\Http\Controllers'  ;
     
     public function boot()
     {
         // Publish config files
         $this->publishes([
-            __DIR__.'/../config/config.php' => app()->basePath() . '/config/aal.php',
+            __DIR__.'/../config/config.php' =>  config_path('aal.php'), 
         ]);
 
         // Register commands
@@ -23,6 +24,19 @@ class AALServiceProvider extends ServiceProvider
 
         // Register blade directives
         $this->bladeDirectives();
+
+
+        $this->loadRoutesFrom(__DIR__.'/Http/routes.php');
+
+
+        $this->loadViewsFrom(__DIR__.'/Views', 'autorizacao');
+
+/*
+        $this->publishes([
+            __DIR__.'/Views' => resource_path('views/vendor/autorizacao'),
+        ]);
+*/
+
     }
 
    
@@ -32,7 +46,7 @@ class AALServiceProvider extends ServiceProvider
 
     public function register()
     {
-        $this->registerEntrust();
+        $this->registerAAL();
 
         $this->registerCommands();
 

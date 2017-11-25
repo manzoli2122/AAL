@@ -1,5 +1,5 @@
 {
-    "name": "manzoli2122/AAL",
+    "name": "manzoli2122/aal",
     "description": "Este pacote fornece uma forma de adicionar Perfil baseado em Permissão para Laravel, AAL - Autenticação e Autorização para Laravel",
     "keywords": ["laravel","illuminate","auth","perfil","acl","permissao"],
     "license": "MIT",
