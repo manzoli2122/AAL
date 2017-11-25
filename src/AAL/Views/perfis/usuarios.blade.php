@@ -23,14 +23,14 @@
             <ul class="nav nav-pills flex-column">
                
 
-				@can('usuarios-cadastrar')
+				
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('perfis.usuarios.cadastrar', $model->id ) }}">
                             
                             Adicionar Usuário
                         </a>
                     </li>
-				@endcan
+				
 				
             </ul>
         </div>  

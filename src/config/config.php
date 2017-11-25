@@ -7,7 +7,7 @@ return [
     //'perfil' => 'App\Perfil',
 
    
-    'perfis_table' => 'perfis',
+    'perfis_table' => 'perfils',
 
    
     'perfil_foreign_key' => 'perfil_id',
@@ -21,7 +21,7 @@ return [
 
   
     
-    'perfil_usuario_table' => 'perfis_users',
+    'perfil_usuario_table' => 'perfils_users',
 
     
     //'usuario_foreign_key' => 'user_id',
@@ -35,7 +35,7 @@ return [
 
    
     
-    'permissoen_perfil_table' => 'permissao_perfil',
+    'permissoen_perfil_table' => 'permissao_perfils',
 
    
     

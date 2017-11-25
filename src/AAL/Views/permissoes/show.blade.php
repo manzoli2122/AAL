@@ -9,21 +9,19 @@
             <ul class="nav nav-pills flex-column">
                
 				
-				@can('usuarios-apagados')
+				
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route("permissoes.perfis", $model->id) }}">                            
                             Perfis
                         </a>
                     </li>
-				@endcan
-
-                @can('usuarios-apagados')
+				
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route("permissoes.edit", $model->id) }}">                            
                             Editar
                         </a>
                     </li>
-				@endcan
+				
             </ul>
         </div>  
 @endsection

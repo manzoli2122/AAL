@@ -128,7 +128,7 @@ trait AALPerfilTrait
     
 
 
-    public function savepermissaos($inputPermissoes)
+    public function savePermissoes($inputPermissoes)
     {
         if (!empty($inputPermissoes)) {
             $this->permissoes()->sync($inputPermissoes);
