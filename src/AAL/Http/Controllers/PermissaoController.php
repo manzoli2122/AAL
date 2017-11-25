@@ -18,8 +18,8 @@ class PermissaoController extends StandardController
     
     public function __construct(Permissao $permissao){
         $this->model = $permissao;
-        $this->middleware('can:permissoes');
-        $this->middleware('can:permissoes_editar')->only(['edit' , 'update']);
+        //$this->middleware('can:permissoes');
+        //$this->middleware('can:permissoes_editar')->only(['edit' , 'update']);
     }
 
 

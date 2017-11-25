@@ -28,6 +28,11 @@ class AALServiceProvider extends ServiceProvider
         $this->bladeDirectives();
 
 
+        $this->publishes([
+            __DIR__.'/Views/Assets' => public_path('vendor/autorizacao'),
+        ], 'public');
+
+
 
         $this->loadViewsFrom(__DIR__.'/Views', 'autorizacao');
 

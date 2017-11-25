@@ -7,17 +7,14 @@
 		<meta name="author" content="">
 		<title>{{$title or 'Admin' }}</title>
 		<!-- Bootstrap -->
-		<link rel="stylesheet" href="{{ url('assets/bootstrap/css/bootstrap.min.css')}} ">		
+		<link rel="stylesheet" href="{{ url('vendor/autorizacao/bootstrap/css/bootstrap.min.css')}} ">		
 		<!--Fonts-->
-		<link rel="stylesheet" href="{{ url('assets/painel/css/font-awesome.min.css')}} ">
+		<link rel="stylesheet" href="{{ url('vendor/autorizacao/css/font-awesome.min.css')}} ">
 		
 		
-		
-		
-		<link rel="stylesheet" href="{{ url('assets/painel/css/app.css')}} ">
 		@stack('head-scripts')		
 		<!--Favicon-->
-		<link rel="icon" type="image/png" href="{{ url('assets/painel/imgs/favicon.png')}}">
+		<link rel="icon" type="image/png" href="{{ url('vendor/autorizacao/imgs/favicon.png')}}">
 	</head>
 <body>
 
@@ -95,11 +92,11 @@
     @yield('contentMaster')
 
 	<!--jQuery-->
-	<script src="{{ url('assets/painel/js/jquery-3.2.1.min.js')}}"></script>
-	<script src="{{ url('assets/painel/js/popper.js')}}"></script>
+	<script src="{{ url('vendor/autorizacao/js/jquery-3.2.1.min.js')}}"></script>
+	<script src="{{ url('vendor/autorizacao/js/popper.js')}}"></script>
 	<script>$(function(){setTimeout("$('.hide-msg').fadeOut();",5000)});</script>
 	<!-- jS Bootstrap -->
-	<script src="{{ url('assets/bootstrap/js/bootstrap.min.js')}}"></script>
+	<script src="{{ url('vendor/autorizacao/bootstrap/js/bootstrap.min.js')}}"></script>
 	@stack('scripts')
 </body>
 </html>

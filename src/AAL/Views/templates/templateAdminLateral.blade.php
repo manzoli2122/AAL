@@ -1,4 +1,4 @@
-@extends('admin::templates.templateAdmin')
+@extends('autorizacao::templates.templateAdmin')
 
 	@section('contentMaster') 
 
