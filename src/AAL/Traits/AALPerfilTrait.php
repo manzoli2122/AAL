@@ -73,7 +73,7 @@ trait AALPerfilTrait
 
     public function permissoes()
     {
-        return $this->belongsToMany(Config::get('aal.permissao'), Config::get('aal.permissao_perfil_table'), Config::get('aal.perfil_foreign_key'), Config::get('aal.permissao_foreign_key'));
+        return $this->belongsToMany('Manzoli2122\AAL\Models\Permissao', Config::get('aal.permissao_perfil_table'), Config::get('aal.perfil_foreign_key'), Config::get('aal.permissao_foreign_key'));
     }
 
    
@@ -85,7 +85,7 @@ trait AALPerfilTrait
         parent::boot();
 
         static::deleting(function ($perfil) {
-            if (!method_exists(Config::get('aal.perfil'), 'bootSoftDeletes')) {
+            if (!method_exists( 'Manzoli2122\AAL\Models\Perfil' , 'bootSoftDeletes')) {
                 $perfil->usuarios()->sync([]);
                 $perfil->permissoes()->sync([]);
             }

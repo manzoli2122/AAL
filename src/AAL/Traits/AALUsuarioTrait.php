@@ -80,7 +80,7 @@ trait AALUsuarioTrait
 
     public function perfis()
     {
-        return $this->belongsToMany(Config::get('aal.perfil'), Config::get('aal.perfil_usuario_table'), Config::get('aal.usuario_foreign_key'), Config::get('aal.perfil_foreign_key'));
+        return $this->belongsToMany( 'Manzoli2122\AAL\Models\Perfil' , Config::get('aal.perfil_usuario_table'), Config::get('aal.usuario_foreign_key'), Config::get('aal.perfil_foreign_key'));
     }
 
    
