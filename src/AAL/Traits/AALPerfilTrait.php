@@ -82,6 +82,18 @@ trait AALPerfilTrait
    
 
 
+    public static function perfils_sem_permissao($permissao_id)
+    {
+        return $this->whereNotIn('id', function($query) use ($permissao_id){
+            $query->select("permissao_perfils.perfil_id");
+            $query->from("permissao_perfils");
+            $query->whereRaw("permissao_perfils.permissao_id = {$permissao_id} ");
+        } )->get();          
+        
+    }
+
+
+
 
     public static function boot()
     {

@@ -18,7 +18,7 @@ class PermissaoController extends StandardController
     
     public function __construct(Permissao $permissao){
         $this->model = $permissao;
-        //$this->middleware('can:permissoes');
+        $this->middleware('permissao:permissoes');
         //$this->middleware('can:permissoes_editar')->only(['edit' , 'update']);
     }
 
@@ -30,22 +30,17 @@ class PermissaoController extends StandardController
     public function perfis($id)
     {        
         $model = $this->model->find($id);
-        //$perfis = $model->perfis()->paginate($this->totalPage);
-        //$title = "Pperfis com permissão {$model->nome}";
         return view("{$this->view}.perfis", compact('model'));
     }
 
  
 
 
+
     public function perfisAdd($id)
     {            
         $model = $this->model->find($id);
-        $perfis = Perfil::whereNotIn('id', function($query) use ($id){
-            $query->select("permissao_perfils.perfil_id");
-            $query->from("permissao_perfils");
-            $query->whereRaw("permissao_perfils.permissao_id = {$id} ");
-        } )->get();
+        $perfis = Perfil::perfils_sem_permissao($id);
         return view("{$this->view}.perfis-add", compact('model','perfis'));
     }
 
@@ -73,8 +68,7 @@ class PermissaoController extends StandardController
         $dataForm = $request->except('_token');
         $model = $this->model->find($id);
         $perfis = $model->perfis()->where('permissoes.nome','LIKE', "%{$dataForm['key']}%")
-                                   ->paginate($this->totalPage);
-       
+                                   ->paginate($this->totalPage);       
         return view("{$this->view}.perfis", compact('model', 'dataForm', 'perfis'));
     }
 
