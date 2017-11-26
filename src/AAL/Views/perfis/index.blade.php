@@ -4,7 +4,7 @@
 @section('pesquisar')				
 	{!! Form::open(['route' => 'perfis.pesquisar', 'class' =>  'form-inline mt-2 mt-md-0']) !!}
         {!! Form::text('key' , null , ['class' => 'form-control mr-sm-2' , 'placeholder' => 'Pesquisar Perfil' , 'aria-label' => 'Search']) !!}		
-		<button style="margin-right:10px;" class="btn btn-outline-success my-2 my-sm-0 " type="submit">
+		<button class="btn btn-outline-success my-2 my-sm-0 botao-pesquisar" type="submit">
 			<i class="fa fa-search" aria-hidden="true"></i>
 		</button>		
     {!!  Form::close()  !!}
@@ -12,22 +12,15 @@
 
 
 
-
-
 @section('menuLateral')
 		<div class="col-sm-3 col-md-2 menu-lateral-salao " >
             <ul class="nav nav-pills flex-column">
                
-
-				
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('perfis.create') }}">
-                            
+                        <a class="nav-link botao-menu-lateral" href="{{ route('perfis.create') }}">                            
                             Cadastrar Novo Perfil
                         </a>
                     </li>
-				
-				
             </ul>
         </div>  
 @endsection

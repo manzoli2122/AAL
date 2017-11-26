@@ -2,21 +2,18 @@
 
 
 
-
-
 @section('menuLateral')
 		<div class="col-sm-3 col-md-2 menu-lateral-salao " >
             <ul class="nav nav-pills flex-column">             
-				
-				
+								
                     <li class="nav-item">
-                        <a class="nav-link  btn-danger" href="{{ route("permissoes.perfis", $model->id) }}">                            
+                        <a class="nav-link  botao-menu-lateral" href="{{ route("permissoes.perfis", $model->id) }}">                            
                             <b>Perfis</b>
                         </a>
                     </li>
 				
                     <li class="nav-item">
-                        <a class="nav-link  btn-danger" href="{{ route("permissoes.edit", $model->id) }}">                            
+                        <a class="nav-link  botao-menu-lateral" href="{{ route("permissoes.edit", $model->id) }}">                            
                             <b>Editar</b>
                         </a>
                     </li>

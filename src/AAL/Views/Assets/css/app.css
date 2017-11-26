@@ -15,11 +15,22 @@ body {
 .botao-menu-lateral{
   color:white;
   background-color: #d81c1e;
+  font-weight: bolder;
 }
+
+
+
+
+
+
+
+
+
+
 
 /*
  * Typography
- */
+ 
 
 h1 {
   padding-bottom: 9px;
@@ -166,11 +177,11 @@ h1 {
   background-color: #167104;
 }
 
-
+/*
 .nav-pills .nav-link{
   color: black;
 }
-
+*/
 
 ul.pagination li {
   padding-right: 15px;

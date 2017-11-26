@@ -3,31 +3,25 @@
 
 
 
-@section('pesquisar')
-	
-				{!! Form::open(['route' => ['perfis.permissoes.pesquisar', $model->id ], 'class' =>  'form form-inline', 'style' => 'display: inline;']) !!}
-                    {!! Form::text('key' , null , ['class' => 'form-control' , 'placeholder' => 'Nome' , 'style' => 'min-width: 400px;']) !!}
-					<button style="margin-right:10px;" class="btn btn-outline-success my-2 my-sm-0 " type="submit">
-						<i class="fa fa-search" aria-hidden="true"></i>
-					</button>					
-                {!!  Form::close()  !!}	
-	
+@section('pesquisar')	
+	{!! Form::open(['route' => ['perfis.permissoes.pesquisar', $model->id ], 'class' =>  'form-inline mt-2 mt-md-0']) !!}
+        {!! Form::text('key' , null , ['class' => 'form-control' , 'placeholder' => 'Pesquisar' ]) !!}
+		<button class="btn btn-outline-success my-2 my-sm-0 botao-pesquisar" type="submit">
+			<i class="fa fa-search" aria-hidden="true"></i>
+		</button>					
+    {!!  Form::close()  !!}		
 @endsection
 
 
 @section('menuLateral')
 		<div class="col-sm-3 col-md-2 menu-lateral-salao " >
             <ul class="nav nav-pills flex-column">
-               
 
-				
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('perfis.permissoes.cadastrar', $model->id ) }}">
-                            
+                        <a class="nav-link" href="{{route('perfis.permissoes.cadastrar', $model->id ) }}">                            
                             Adicionar Permissão
                         </a>
-                    </li>
-				
+                    </li>				
 				
             </ul>
         </div>  
