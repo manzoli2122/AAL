@@ -12,6 +12,18 @@ use InvalidArgumentException;
 trait AALUsuarioTrait
 {
     
+    public static function boot()
+    {
+        parent::boot();
+        static::deleting(function($usuario) {
+            if (!method_exists(Config::get('auth.providers.users.model'), 'bootSoftDeletes')) {
+                $usuario->perfis()->sync([]);
+            }
+            return true;
+        });
+    }
+
+
 
 
     public function cachedPerfis()
@@ -83,24 +95,24 @@ trait AALUsuarioTrait
         return $this->belongsToMany( 'Manzoli2122\AAL\Models\Perfil' , Config::get('aal.perfil_usuario_table'), Config::get('aal.usuario_foreign_key'), Config::get('aal.perfil_foreign_key'));
     }
 
+
+    
+    
    
+    public function usuarios_sem_perfil($perfil_id)
+    {
+        return $this->whereNotIn('id', function($query) use ($perfil_id){
+            $query->select("perfils_users.user_id");
+            $query->from("perfils_users");
+            $query->whereRaw("perfils_users.perfil_id = {$perfil_id} ");
+        } )->get();       
+        
+    }
     
 
 
 
-    public static function boot()
-    {
-        parent::boot();
-
-        static::deleting(function($usuario) {
-            if (!method_exists(Config::get('auth.providers.users.model'), 'bootSoftDeletes')) {
-                $usuario->perfis()->sync([]);
-            }
-
-            return true;
-        });
-    }
-
+    
     
     
 

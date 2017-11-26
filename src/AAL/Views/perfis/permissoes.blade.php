@@ -54,7 +54,7 @@
 					<th width="200">Ações</th>					
 				</tr>
 
-				@forelse($permissoes as $permissao)
+				@forelse($model->permissoes as $permissao)
 					<tr>
 						<td>{{$permissao->nome}}</td>						
 						<td>

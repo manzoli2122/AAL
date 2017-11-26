@@ -71,6 +71,9 @@ trait AALPerfilTrait
   
 
 
+
+
+
     public function permissoes()
     {
         return $this->belongsToMany('Manzoli2122\AAL\Models\Permissao', Config::get('aal.permissao_perfil_table'), Config::get('aal.perfil_foreign_key'), Config::get('aal.permissao_foreign_key'));

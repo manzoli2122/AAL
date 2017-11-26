@@ -23,16 +23,25 @@ trait AALPermissaoTrait
     public static function boot()
     {
         parent::boot();
-
         static::deleting(function($permissao) {
             if (!method_exists( 'Manzoli2122\AAL\Models\Permissao', 'bootSoftDeletes')) {
                 $permissao->perfis()->sync([]);
             }
-
             return true;
         });
     }
 
+
+
+    public static function permissos_sem_perfil($perfil_id)
+    {
+        return $this->whereNotIn('id', function($query) use ($perfil_id){
+            $query->select("permissao_perfils.permissao_id");
+            $query->from("permissao_perfils");
+            $query->whereRaw("permissao_perfils.perfil_id = {$perfil_id} ");
+        } )->get();            
+        
+    }
 
 
     
