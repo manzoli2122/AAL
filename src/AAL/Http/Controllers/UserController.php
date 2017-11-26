@@ -3,12 +3,9 @@
 namespace  Manzoli2122\AAL\Http\Controllers;
 
 use Illuminate\Console\Command;
-
 use Illuminate\Http\Request;
-use Manzoli2122\AAL\Models\User;
 use Manzoli2122\AAL\Models\Perfil;
 use Auth;
-use Carbon\Carbon;
 
 class UserController extends Controller
 {
@@ -17,9 +14,11 @@ class UserController extends Controller
 
     private $user ;
     
-    public function __construct(User $user){
-        $this->user = $user;
-        
+    public function __construct(){
+
+        $usuarioModelName = Config::get('auth.providers.users.model');
+        $this->user = new $usuarioModelName();
+       
         //$this->middleware('can:usuarios');
        // $this->middleware('can:usuarios_perfis')->only(['perfis' , 'perfisAdd' , 'perfilAddUsuarios' , 'deletePerfil']);
     }

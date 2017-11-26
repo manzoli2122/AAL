@@ -5,18 +5,22 @@ namespace  Manzoli2122\AAL\Http\Controllers;
 use Illuminate\Http\Request;
 use Manzoli2122\AAL\Models\Perfil;
 use Manzoli2122\AAL\Models\Permissao;  
-use Manzoli2122\AAL\Models\User;  
+use Manzoli2122\AAL\Models\User; 
+use Illuminate\Support\Facades\Config; 
 
 class PerfilController extends StandardController
 {
  
         protected $model;    
+        protected $user; 
         protected $name = "Perfil";    
         protected $view = "autorizacao::perfis";    
         protected $route = "perfis";
         
         
         public function __construct(Perfil $perfil){
+            $usuarioModelName = Config::get('auth.providers.users.model');
+            $this->user = new $usuarioModelName();
             $this->model = $perfil;
 
             //$this->middleware('can:perfis');
