@@ -38,42 +38,39 @@
 
 @section('content')
 
+	<section class="row text-center  titulo-pagina">
+        <div class="col-12 col-sm-12 titulo">
+			<h5>Perfis da Permissão {{$model->nome}}</h5>
+        </div>        
+    </section>
 
-	<div class="title-pg text-center">
-			<h3 class="title-pg">Perfis da Permissão {{$model->nome}}</h3>
-		</div>
 
-		<div class="content-din bg-white">
-
-					
-
+	
+	<section class="row text-center Listagens">
+        <div class="col-12 col-sm-12 lista">		
 			@if(Session::has('success'))
 				<div class="alert alert-success hide-msg" style="float: left; width:100%; margin: 10px 0px;">
 				{{Session::get('success')}}
 				</div>
-			@endif
-			
-			<table class="table table-striped table-sm">
-				<tr>
+			@endif			
+				
+			<table class="table table-bordered  table-striped table-sm">
+				<tr class="thead-dark">
 					<th>Nome</th>
 					<th>Ações</th>
-					
 				</tr>
-
 				@forelse($model->perfis as $perfil)
 					<tr>
-						<td>{{$perfil->nome}}</td>
-						
-						<td>
-							<a href='{{route("permissoes.perfis.delete", [$model->id , $perfil->id])}}' class="delete"> <span class="glyphicon glyphicon-trash"></span> Deletar</a>
-						</td>
+						td>{{$perfil->nome}}</td>						
+						<td><a href='{{route("permissoes.perfis.delete", [$model->id , $perfil->id])}}' class="delete"> <span class="glyphicon glyphicon-trash"></span> Deletar</a></td>						
 					</tr>
-				@empty
-                   
+				@empty                   
                 @endforelse
 			</table>
 			
-		</div><!--Content Dinâmico-->
-
+        </div>
+       
+    </section>
+	
 
 @endsection

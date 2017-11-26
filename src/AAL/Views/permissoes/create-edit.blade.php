@@ -19,7 +19,7 @@
     </section>
 
 
-     <section class="row text-center errors">
+    <section class="row text-center errors">
         <div class="col-12 col-sm-12 error">
             @if(isset($errors) && count($errors)>0)
                 <div class="alert alert-warning">
@@ -54,7 +54,7 @@
                     </div>
                 {!! Form::close()!!}
         </div>   
-        <div class="col-1 col-sm-2 placeholder"></div>     
+        <div class="col-1 col-sm-1 placeholder"></div>     
     </section>
 
 

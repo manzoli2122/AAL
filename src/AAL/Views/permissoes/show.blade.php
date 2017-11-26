@@ -27,22 +27,18 @@
 
 @section('content')
     
-	<section class="row text-center placeholders">
-        
+	<section class="row text-center conteudo-objeto">        
 		<div class="col-12 col-sm-12">
-            <div class="col-12 col-sm-12 placeholder">
-				<h3 style="text-align:center;"> Permissão </h3>
+            <div class="col-12 col-sm-12 conteudo">
+				<h3> Permissão </h3>
 			</div> 
-
-			<div class="col-12 col-sm-12 placeholder">
-				<h4 style="text-align:center;"> {{$model->nome}} </h4>
+			<div class="col-12 col-sm-12 conteudo">
+				<h4> {{$model->nome}} </h4>
 			</div>        
-			<div class="col-12 col-sm-12 placeholder">
-				<h5 style="text-align:center;"> {{$model->descricao}} </h5>
-			</div> 
-						
+			<div class="col-12 col-sm-12 conteudo">
+				<h5> {{$model->descricao}} </h5>
+			</div> 						
 		</div>
-
     </section>
 
 @endsection
