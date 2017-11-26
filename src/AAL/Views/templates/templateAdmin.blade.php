@@ -11,7 +11,7 @@
 		<!--Fonts-->
 		<link rel="stylesheet" href="{{ url('vendor/autorizacao/css/font-awesome.min.css')}} ">
 		
-		<link rel="stylesheet" href="{{ url('vendor/autorizacao/css/app.css')}}">
+		<link rel="stylesheet" href="{{ url('vendor/autorizacao/css/autorizacao.css')}}">
 		
 		@stack('head-scripts')		
 		<!--Favicon-->

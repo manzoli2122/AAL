@@ -18,7 +18,7 @@
             <ul class="nav nav-pills flex-column">
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('perfis.permissoes.cadastrar', $model->id ) }}">                            
+                        <a class="nav-link botao-menu-lateral" href="{{route('perfis.permissoes.cadastrar', $model->id ) }}">                            
                             Adicionar Permissão
                         </a>
                     </li>				
@@ -29,40 +29,27 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @section('content')
 
+	<section class="row text-center  titulo-pagina">
+        <div class="col-12 col-sm-12 titulo">
+			<h5>Permissoes do Perfil {{$model->nome}}</h5>
+        </div>        
+    </section>
 
-<div class="title-pg">
-			<h3 class="title-pg  text-center">Permissoes do Perfil {{$model->nome}}</h3>
-		</div>
 
-		<div class="content-din bg-white">
-
-
-			
+	
+	<section class="row text-center Listagens">
+        <div class="col-12 col-sm-12 lista">		
 			@if(Session::has('success'))
 				<div class="alert alert-success hide-msg" style="float: left; width:100%; margin: 10px 0px;">
 				{{Session::get('success')}}
 				</div>
-			@endif
+			@endif	
 			
-			<table class="table table-striped table-sm">
-				<tr>
+			
+			<table class="table table-bordered  table-striped table-sm">
+				<tr class="thead-dark">
 					<th>Nome</th>
 					<th width="200">Ações</th>					
 				</tr>
@@ -74,16 +61,11 @@
 							<a href='{{route("perfis.permissoes.delete", [$model->id , $permissao->id])}}' class="delete"> <span class="glyphicon glyphicon-trash"></span> Deletar</a>
 						</td>
 					</tr>
-				@empty
-                   
+				@empty                   
                 @endforelse
 			</table>
-			@if(isset($dataForm))
-				{!! $permissoes->appends($dataForm)->links() !!}
-			@else
-				{!! $permissoes->links() !!}
-			@endif
-		</div><!--Content Dinâmico-->
-
+		
+		 </div>       
+    </section>
 
 @endsection

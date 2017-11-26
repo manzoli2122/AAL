@@ -3,7 +3,7 @@
 
 @section('pesquisar')				
 	{!! Form::open(['route' => 'perfis.pesquisar', 'class' =>  'form-inline mt-2 mt-md-0']) !!}
-        {!! Form::text('key' , null , ['class' => 'form-control mr-sm-2' , 'placeholder' => 'Pesquisar Perfil' , 'aria-label' => 'Search']) !!}		
+        {!! Form::text('key' , null , ['class' => 'form-control mr-sm-2' , 'placeholder' => 'Pesquisar Perfil' ]) !!}		
 		<button class="btn btn-outline-success my-2 my-sm-0 botao-pesquisar" type="submit">
 			<i class="fa fa-search" aria-hidden="true"></i>
 		</button>		
@@ -29,42 +29,49 @@
 
 @section('content')
 
-		<div class="title-pg">
-			<h4 class="title-pg text-center">Listagem dos Perfis</h4>
-		</div>
 
-		<div class="content-din bg-white">
 
+	<section class="row text-center titulo-pagina">
+        <div class="col-12 col-sm-12 titulo">
+			<h5>Listagem dos Perfis </h5>
+        </div>        
+    </section>
+
+	
+	
+	<section class="row text-center Listagens">
+        <div class="col-12 col-sm-12 lista">		
 			@if(Session::has('success'))
 				<div class="alert alert-success hide-msg" style="float: left; width:100%; margin: 10px 0px;">
 				{{Session::get('success')}}
 				</div>
-			@endif
-			
-			<table class="table table-striped table-sm" >
-				<tr>
+			@endif		
+				
+			<table class="table table-bordered  table-striped table-sm">
+				<tr class="thead-dark">
 					<th>Nome</th>
-					<th>Descrição</th>					
+					<th>Descrição</th>
 				</tr>
-
 				@forelse($models as $model)
 					<tr>
 						<td>
 							<a href='{{route("perfis.show", $model->id)}}' class="delete"> <span class="glyphicon glyphicon-eye-open"></span> {{$model->nome}}</a>
 						</td>
-						<td>{{$model->descricao}}</td>
-						
+						<td>{{$model->descricao}}</td>					
 					</tr>
-				@empty
-                   
+				@empty                   
                 @endforelse
 			</table>
+			
+        </div>
+        <div class="col-12 col-sm-12 paginacao">
 			@if(isset($dataForm))
 				{!! $models->appends($dataForm)->links() !!}
 			@else
 				{!! $models->links() !!}
 			@endif
-		</div><!--Content Dinâmico-->
+        </div>
+    </section>
 
 
 @endsection

@@ -87,7 +87,7 @@ class StandardController extends BaseController
         $model = $this->model->find($id);                 
         $update = $model->update($dataForm);                
         if($update){
-            return redirect()->route("{$this->route}.index")->with(['success' => 'Alteração realizada com sucesso']);
+            return redirect()->route("{$this->route}.show" , ['id'=> $id])->with(['success' => 'Alteração realizada com sucesso']);
         }        
         else {
             return redirect()->route("{$this->route}.edit" , ['id'=> $id])->withErrors(['errors' =>'Erro no Editar'])->withInput();
