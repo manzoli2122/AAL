@@ -4,7 +4,7 @@
 @section('pesquisar')				
 	{!! Form::open(['route' => 'permissoes.pesquisar', 'class' =>  'form-inline mt-2 mt-md-0']) !!}
         {!! Form::text('key' , null , ['class' => 'form-control mr-sm-2' , 'placeholder' => 'Pesquisar Permissões' , 'aria-label' => 'Search']) !!}		
-		<button style="margin-right:10px;" class="btn btn-outline-success my-2 my-sm-0 " type="submit">
+		<button class="btn btn-outline-success my-2 my-sm-0 botao-pesquisar" type="submit">
 			<i class="fa fa-search" aria-hidden="true"></i>
 		</button>		
     {!!  Form::close()  !!}
@@ -16,7 +16,7 @@
             <ul class="nav nav-pills flex-column">
 			
                     <li class="nav-item">
-                        <a class="nav-link btn-danger" style="color:white;" href="{{ route('permissoes.create') }}">                            
+                        <a class="nav-link btn-danger botao-menu-lateral" href="{{ route('permissoes.create') }}">                            
                             <b>Cadastrar Permissão</b>
                         </a>
                     </li>
