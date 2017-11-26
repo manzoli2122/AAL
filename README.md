@@ -40,3 +40,35 @@ php artisan aal:migration
         'perfil' => \Manzoli2122\AAL\Middleware\AALPerfil::class,
         'permissao' => \Manzoli2122\AAL\Middleware\AALPermissao::class,
         //'ability' => \Manzoli2122\AAL\Middleware\AALAbility::class,
+
+
+### Models
+
+
+#### User
+
+Use `AALUsuarioTrait` trait na classe `User`. por exemplo:
+
+```php
+<?php
+
+use Manzoli2122\AAL\Traits\AALUsuarioTrait;
+
+class User extends Authenticatable
+{
+    use AALUsuarioTrait;
+
+    ...
+}
+```
+
+This will enable the relation with `Role` and add the following methods `roles()`, `hasRole($name)`, `withRole($name)`, `can($permission)`, and `ability($roles, $permissions, $options)` within your `User` model.
+
+Don't forget to dump composer autoload
+
+```bash
+composer dump-autoload
+```
+
+**And you are ready to go.**
+

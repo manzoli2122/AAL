@@ -5,7 +5,7 @@ namespace  Manzoli2122\AAL\Http\Controllers;
 use Illuminate\Http\Request;
 use Manzoli2122\AAL\Models\Perfil;
 use Manzoli2122\AAL\Models\Permissao;  
-use Manzoli2122\AAL\Models\User; 
+//use Manzoli2122\AAL\Models\User; 
 use Illuminate\Support\Facades\Config; 
 
 class PerfilController extends StandardController
@@ -46,7 +46,7 @@ class PerfilController extends StandardController
         {            
             $model = $this->model->find($id);
 
-            $users = User::whereNotIn('id', function($query) use ($id){
+            $users =$this->user->whereNotIn('id', function($query) use ($id){
                 $query->select("perfils_users.user_id");
                 $query->from("perfils_users");
                 $query->whereRaw("perfils_users.perfil_id = {$id} ");

@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Manzoli2122\AAL\Models\Perfil;
 use Auth;
 
+use Illuminate\Support\Facades\Config;
+
 class UserController extends Controller
 {
     
