@@ -16,12 +16,19 @@ body {
   color:white;
   background-color: #d81c1e;
   font-weight: bolder;
+  margin-bottom: 15px;
 }
 
 
 
 
+.titulo-pagina{
+  margin-bottom: 20px;
+}
 
+.paginacao{
+  font-size:20px;
+}
 
 
 
