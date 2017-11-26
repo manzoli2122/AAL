@@ -2,6 +2,8 @@
 
 namespace  Manzoli2122\AAL\Http\Controllers;
 
+use Illuminate\Console\Command;
+
 use Illuminate\Http\Request;
 use Manzoli2122\AAL\Models\User;
 use Manzoli2122\AAL\Models\Perfil;
@@ -23,11 +25,7 @@ class UserController extends Controller
     }
 
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
 
@@ -37,12 +35,7 @@ class UserController extends Controller
     }
 
    
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function show($id)
     {
         $user = $this->user->find($id);
@@ -88,7 +81,10 @@ class UserController extends Controller
         $model = $this->user->find($id);
 
 
-        if(Auth::user()->hasPerfil('Admin')){
+        $usuario = $this->user->find(Auth::user()->getKey());
+
+
+        if($usuario->hasPerfil('Admin')){
             $perfis = Perfil::whereNotIn('id', function($query) use ($id){
                         $query->select("perfils_users.perfil_id");
                         $query->from("perfils_users");
