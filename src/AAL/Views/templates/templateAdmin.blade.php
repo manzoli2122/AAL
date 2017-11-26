@@ -21,7 +21,7 @@
 
 	<header>
       	<nav class="navbar navbar-expand-lg navbar-dark fixed-top " style="background-color: #d81c1e;">
-        	<a class="navbar-brand" href="{{ url('/painel')}}"><i class="fa fa-home" aria-hidden="true"></i>Home</a>
+        	<a class="navbar-brand" href="{{ url('/')}}"><i class="fa fa-home" aria-hidden="true"></i>Home</a>
 			
         	<button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
           		<span class="navbar-toggler-icon"></span>
