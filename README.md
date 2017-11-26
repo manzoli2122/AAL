@@ -2,6 +2,8 @@
 
 [![License]](https://packagist.org/packages/manzoli2122/all)
 
+[![Total Downloads](https://poser.pugx.org/phpunit/phpunit/downloads)](https://packagist.org/packages/manzoli2122/all)
+
 ![License](https://packagist.org/packages/manzoli2122/all/license)](https://packagist.org/packages/manzoli2122/all)
 
 Open your config/app.php and add the following to the providers array:
