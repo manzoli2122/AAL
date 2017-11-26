@@ -118,7 +118,7 @@ class UserController extends Controller
         }
 
         //$model->perfis()->attach($request->get('perfis'));
-        return redirect()->route('users.perfis' ,$id)->with(['success' => 'Perfis vinculados com sucesso']);
+        return redirect()->route('autorizacao.users.perfis' ,$id)->with(['success' => 'Perfis vinculados com sucesso']);
     }
 
 
@@ -134,11 +134,11 @@ class UserController extends Controller
         $perfil = Perfil::find($perfilId);
 
         if( $perfil->nome == 'Admin' and ! Auth::user()->hasPerfil('Admin'))
-            return redirect()->route('users.perfis' ,$id)->with(['error' => 'Perfil não pode ser Removido']);
+            return redirect()->route('autorizacao.users.perfis' ,$id)->with(['error' => 'Perfil não pode ser Removido']);
 
         $model->perfis()->detach($perfilId);   
 
-        return redirect()->route('users.perfis' ,$id)->with(['success' => 'Perfil Removido com sucesso']);
+        return redirect()->route('autorizacao.users.perfis' ,$id)->with(['success' => 'Perfil Removido com sucesso']);
     }
 
 

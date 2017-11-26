@@ -5,7 +5,7 @@ namespace  Manzoli2122\AAL\Http\Controllers;
 use Illuminate\Http\Request;
 use Manzoli2122\AAL\Models\Perfil;
 use Manzoli2122\AAL\Models\Permissao;  
-use App\Core\User;  
+use Manzoli2122\AAL\Models\User;  
 
 class PerfilController extends StandardController
 {
