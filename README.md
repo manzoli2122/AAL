@@ -1,4 +1,4 @@
-# AAL Autenticação e Autorização Laravel
+# AAL - Autenticação e Autorização Laravel
 
 
 [![Latest Stable Version](https://poser.pugx.org/manzoli2122/all/v/stable)](https://packagist.org/packages/manzoli2122/all)
@@ -36,3 +36,7 @@ php artisan vendor:publish
 
 
 php artisan aal:migration
+
+        'perfil' => \Manzoli2122\AAL\Middleware\AALPerfil::class,
+        'permissao' => \Manzoli2122\AAL\Middleware\AALPermissao::class,
+        //'ability' => \Manzoli2122\AAL\Middleware\AALAbility::class,

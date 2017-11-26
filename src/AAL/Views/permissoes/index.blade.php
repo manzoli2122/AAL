@@ -14,12 +14,13 @@
 @section('menuLateral')
 		<div class="col-sm-3 col-md-2 menu-lateral-salao " >
             <ul class="nav nav-pills flex-column">
-
+				@perfil('Admin')
                     <li class="nav-item">
                         <a class="nav-link botao-menu-lateral" href="{{ route('permissoes.create') }}">                            
                             Cadastrar Permissão
                         </a>
                     </li>
+				@endperfil
             </ul>
         </div>  
 @endsection
