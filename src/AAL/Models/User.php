@@ -8,7 +8,7 @@ use Manzoli2122\AAL\Traits\AALUsuarioTrait;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Database\Eloquent\Model;
 
-class Permissao extends Model implements AALUsuarioInterface
+class User extends Model implements AALUsuarioInterface
 {
     
     use AALUsuarioTrait;

@@ -61,9 +61,9 @@
 		</div>
         <div class="col-12 col-sm-12 paginacao">
 			@if(isset($dataForm))
-				{!! $models->appends($dataForm)->links() !!}
+				{!! $users->appends($dataForm)->links() !!}
 			@else
-				{!! $models->links() !!}
+				{!! $users->links() !!}
 			@endif
         </div>
     </section>

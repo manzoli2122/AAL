@@ -33,7 +33,7 @@ class UserController extends Controller
 
         $title = 'Listagem dos usuarios';
         $users = $this->user::paginate($this->totalPage);
-        return view('admin::usuarios.index', compact('users', 'title'));
+        return view('autorizacao::usuarios.index', compact('users', 'title'));
     }
 
    
@@ -46,7 +46,7 @@ class UserController extends Controller
     public function show($id)
     {
         $user = $this->user->find($id);
-        return view('admin::usuarios.show', compact('user'));
+        return view('autorizacao::usuarios.show', compact('user'));
     }
 
     
@@ -61,7 +61,7 @@ class UserController extends Controller
         $dataForm = $request->except('_token');
         $users = $this->user->where('name','LIKE', "%{$dataForm['key']}%")->orWhere('email',  $dataForm['key'] )->paginate($this->totalPage);
        
-        return view('admin::usuarios.index', compact('users', 'dataForm'));
+        return view('autorizacao::usuarios.index', compact('users', 'dataForm'));
 
     }
 
@@ -77,7 +77,7 @@ class UserController extends Controller
         $model = $this->user->find($id);
         $perfis = $model->perfis()->paginate($this->totalPage);
         $title = "Perfils do {$model->name}";
-        return view("admin::usuarios.perfis", compact('model','perfis','title'));
+        return view("autorizacao::usuarios.perfis", compact('model','perfis','title'));
     }
 
 
@@ -94,7 +94,7 @@ class UserController extends Controller
                         $query->from("perfils_users");
                         $query->whereRaw("perfils_users.user_id = {$id} ");
                     })->get();
-            return view("admin::usuarios.perfis-add", compact('model','perfis'));
+            return view("autorizacao::usuarios.perfis-add", compact('model','perfis'));
         }
 
         $perfis = Perfil::whereNotIn('id', function($query) use ($id){
@@ -104,7 +104,7 @@ class UserController extends Controller
                     })
                     ->where('nome', '<>' , 'Admin')->get();
         
-        return view("admin::usuarios.perfis-add", compact('model','perfis'));
+        return view("autorizacao::usuarios.perfis-add", compact('model','perfis'));
     }
 
 
