@@ -51,9 +51,9 @@ trait AALPermissaoTrait
         if(is_object($perfil)) {
             $perfil = $perfil->getKey();
         }
-        if(is_array($perfil)) {
-            return $this->attachPerfis($perfil);
-        }
+        //if(is_array($perfil)) {
+        //    return $this->attachPerfis($perfil);
+        //}
         $this->perfis()->attach($perfil);
 
     }
@@ -63,9 +63,9 @@ trait AALPermissaoTrait
         if (is_object($perfil)) {
             $perfil = $perfil->getKey();
         }
-        if (is_array($perfil)) {
-            return $this->detachPerfis($perfil);
-        }
+        //if (is_array($perfil)) {
+        //    return $this->detachPerfis($perfil);
+        //}
         $this->perfis()->detach($perfil);
     }
     

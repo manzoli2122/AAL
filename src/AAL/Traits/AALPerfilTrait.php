@@ -153,9 +153,9 @@ trait AALPerfilTrait
         if (is_object($permissao)) {
             $permissao = $permissao->getKey();
         }
-        if (is_array($permissao)) {
-            return $this->attachPermissoes($permissao);
-        }
+        //if (is_array($permissao)) {
+        //    return $this->attachPermissoes($permissao);
+        //}
         $this->permissoes()->attach($permissao);
     }
 
@@ -168,9 +168,9 @@ trait AALPerfilTrait
         if (is_object($permissao)) {
             $permissao = $permissao->getKey();
         }
-        if (is_array($permissao)) {
-            return $this->detachPermissoes($permissao);
-        }
+        //if (is_array($permissao)) {
+        //    return $this->detachPermissoes($permissao);
+        //}
         $this->permissoes()->detach($permissao);
     }
 
@@ -205,9 +205,9 @@ trait AALPerfilTrait
         if (is_object($usuario)) {
             $usuario = $usuario->getKey();
         }
-        if (is_array($usuario)) {
-            return $this->attachUsuarios($usuario);
-        }
+        //if (is_array($usuario)) {
+        //    return $this->attachUsuarios($usuario);
+        //}
         $this->usuarios()->attach($usuario);
     }
 
@@ -220,9 +220,9 @@ trait AALPerfilTrait
         if (is_object($usuario)) {
             $usuario = $usuario->getKey();
         }
-        if (is_array($usuario)) {
-            return $this->detachUsuarios($usuario);
-        }
+        //if (is_array($usuario)) {
+        //    return $this->detachUsuarios($usuario);
+        //}
         $this->usuarios()->detach($usuario);
     }
 

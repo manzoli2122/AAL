@@ -157,6 +157,13 @@ trait AALUsuarioTrait
 
     public function can($permissao, $requireAll = false)
     {
+        
+        
+        if($this->hasPerfil('Admin')){
+            return true;
+        }
+        
+        
         if (is_array($permissao)) {
             foreach ($permissao as $permName) {
                 $hasPerm = $this->can($permName);
@@ -176,7 +183,7 @@ trait AALUsuarioTrait
             foreach ($this->cachedPerfis() as $perfil) {
                 // Validate against the Permission table
                 foreach ($perfil->cachedPermissoes() as $perm) {
-                    if (str_is( $permissao, $perm->name) ) {
+                    if (str_is( $permissao, $perm->nome) ) {
                         return true;
                     }
                 }
@@ -263,9 +270,9 @@ trait AALUsuarioTrait
             $perfil = $perfil->getKey();
         }
 
-        if(is_array($perfil)) {
-            $perfil = $perfil['id'];
-        }
+        //if(is_array($perfil)) {
+        //    $perfil = $perfil['id'];
+       // }
 
         $this->perfis()->attach($perfil);
     }
@@ -281,9 +288,9 @@ trait AALUsuarioTrait
             $perfil = $perfil->getKey();
         }
 
-        if (is_array($perfil)) {
-            $perfil = $perfil['id'];
-        }
+        //if (is_array($perfil)) {
+        //    $perfil = $perfil['id'];
+        //}
 
         $this->perfis()->detach($perfil);
     }
