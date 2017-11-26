@@ -127,7 +127,7 @@ trait AALUsuarioTrait
             return $requireAll;
         } else {
             foreach ($this->cachedPerfis() as $perfil) {
-                if ($perfil->name == $name) {
+                if ($perfil->nome == $name) {
                     return true;
                 }
             }
