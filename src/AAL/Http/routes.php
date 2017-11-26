@@ -29,18 +29,18 @@ use Illuminate\Support\Facades\Route;
 
 
 
-        Route::get('users/{id}/perfis/{perfilId}/delete', 'UserController@deletePerfil')->name('users.perfis.delete');
-        Route::post('users/{id}/perfis/cadastrar', 'UserController@perfilAddUsuarios')->name('users.perfis.add');
-        Route::get('users/{id}/perfis/cadastrar', 'UserController@perfisAdd')->name('users.perfis.cadastrar');
-        Route::any('users/{id}/perfis/pesquisar', 'UserController@pesquisarPerfis')->name('users.perfis.pesquisar');
-        Route::get('users/{id}/perfis', 'UserController@perfis')->name('users.perfis');
-        Route::any('users/pesquisar', 'UserController@pesquisar')->name('users.pesquisar');
+        Route::get('users/{id}/perfis/{perfilId}/delete', 'UserController@deletePerfil')->name('autorizacao.users.perfis.delete');
+        Route::post('users/{id}/perfis/cadastrar', 'UserController@perfilAddUsuarios')->name('autorizacao.users.perfis.add');
+        Route::get('users/{id}/perfis/cadastrar', 'UserController@perfisAdd')->name('autorizacao.users.perfis.cadastrar');
+        Route::any('users/{id}/perfis/pesquisar', 'UserController@pesquisarPerfis')->name('autorizacao.users.perfis.pesquisar');
+        Route::get('users/{id}/perfis', 'UserController@perfis')->name('autorizacao.users.perfis');
+        Route::any('users/pesquisar', 'UserController@pesquisar')->name('autorizacao.users.pesquisar');
         Route::resource('users', 'UserController');
 
         
 
         
-        Route::get('/', 'AutorizacaoController@index')->name('admin');
+        Route::get('/', 'AutorizacaoController@index')->name('autorizacao');
     
     
     });

@@ -16,7 +16,7 @@
             <ul class="nav nav-pills flex-column">
 
                     <li class="nav-item">
-                        <a class="nav-link btn-danger botao-menu-lateral" href="{{ route('permissoes.create') }}">                            
+                        <a class="nav-link botao-menu-lateral" href="{{ route('permissoes.create') }}">                            
                             Cadastrar Permissão
                         </a>
                     </li>

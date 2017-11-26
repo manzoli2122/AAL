@@ -3,29 +3,24 @@
 
 
 @section('pesquisar')
-	
-				{!! Form::open(['route' => ['users.perfis.pesquisar', $model->id ], 'class' =>  'form form-inline', 'style' => 'display: inline;']) !!}
-                    {!! Form::text('key' , null , ['class' => 'form-control' , 'placeholder' => 'Nome' , 'style' => 'min-width: 400px;']) !!}
-					<button style="margin-right:10px;" class="btn btn-outline-success my-2 my-sm-0 " type="submit">
-						<i class="fa fa-search" aria-hidden="true"></i>
-					</button>					
-                {!!  Form::close()  !!}	
-	
+	{!! Form::open(['route' => ['autorizacao.users.perfis.pesquisar', $model->id ], 'class' =>  'form-inline mt-2 mt-md-0']) !!}
+        {!! Form::text('key' , null , ['class' => 'form-control' , 'placeholder' => 'Nome' , 'style' => 'min-width: 400px;']) !!}
+		<button class="btn btn-outline-success my-2 my-sm-0 botao-pesquisar" type="submit">
+			<i class="fa fa-search" aria-hidden="true"></i>
+		</button>					
+    {!!  Form::close()  !!}		
 @endsection
 
 
 @section('menuLateral')
 		<div class="col-sm-3 col-md-2 menu-lateral-salao " >
-            <ul class="nav nav-pills flex-column">
-               
-				@can('usuarios-cadastrar')
+            <ul class="nav nav-pills flex-column">               
+				
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('users.perfis.cadastrar', $model->id ) }}">
-                            
+                        <a class="nav-link botao-menu-lateral" href="{{route('autorizacao.users.perfis.cadastrar', $model->id ) }}">                            
                             Adicionar Permissão
                         </a>
-                    </li>
-				@endcan
+                    </li>x			
 				
             </ul>
         </div>  
@@ -34,53 +29,39 @@
 
 @section('content')
 
+	<section class="row text-center  titulo-pagina">
+        <div class="col-12 col-sm-12 titulo">
+			<h5>Perfils do {{$model->name}}</h5>
+        </div>        
+    </section>
 
-		<div class="title-pg">
-			<h3 class="title-pg">Perfils do {{$model->name}}</h3>
-		</div>
 
-		<div class="content-din bg-white">
-
-			
-			
-
+	
+	<section class="row text-center Listagens">
+        <div class="col-12 col-sm-12 lista">		
 			@if(Session::has('success'))
 				<div class="alert alert-success hide-msg" style="float: left; width:100%; margin: 10px 0px;">
 				{{Session::get('success')}}
 				</div>
-			@endif
-
-			@if(Session::has('error'))
-				<div class="alert alert-warning hide-msg" style="float: left; width:100%; margin: 10px 0px;">
-				{{Session::get('error')}}
-				</div>
-			@endif
+			@endif	
 			
-			<table class="table table-striped table-sm">
-				<tr>
+			<table class="table table-bordered  table-striped table-sm">
+				<tr class="thead-dark">
 					<th>Nome</th>
-					<th>Ações</th>
-					
+					<th>Ações</th>					
 				</tr>
 
 				@forelse($perfis as $perfil)
 					<tr>
-						<td>{{$perfil->nome}}</td>
-						
+						<td>{{$perfil->nome}}</td>						
 						<td>
-							<a href='{{route("users.perfis.delete", [$model->id , $perfil->id])}}' class="delete"> <span class="glyphicon glyphicon-trash"></span> Deletar</a>
+							<a href='{{route("autorizacao.users.perfis.delete", [$model->id , $perfil->id])}}' class="delete"> <span class="glyphicon glyphicon-trash"></span> Deletar</a>
 						</td>
 					</tr>
-				@empty
-                   
+				@empty                   
                 @endforelse
 			</table>
-			@if(isset($dataForm))
-				{!! $perfis->appends($dataForm)->links() !!}
-			@else
-				{!! $perfis->links() !!}
-			@endif
-		</div><!--Content Dinâmico-->
-
+		</div>       
+    </section>
 
 @endsection
