@@ -1,6 +1,6 @@
 # AAL Autenticação e Autorização Laravel
 
-[![License](https://poser.pugx.org/manzoli2122/aal/license.svg)](https://packagist.org/packages/manzoli2122/all)
+[![License]](https://packagist.org/packages/manzoli2122/all)
 
 
 Open your config/app.php and add the following to the providers array:
