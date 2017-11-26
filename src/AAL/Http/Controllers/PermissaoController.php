@@ -11,13 +11,15 @@ class PermissaoController extends StandardController
     
 
     protected $model;    
+    protected $perfil;
     protected $name = "Permissao";    
     protected $view = "autorizacao::permissoes";    
     protected $route = "permissoes";
     
     
-    public function __construct(Permissao $permissao){
+    public function __construct(Permissao $permissao , Perfil $perfil){
         $this->model = $permissao;
+        $this->perfil = $perfil;
         $this->middleware('permissao:permissoes');
         //$this->middleware('can:permissoes_editar')->only(['edit' , 'update']);
     }
@@ -40,7 +42,7 @@ class PermissaoController extends StandardController
     public function perfisAdd($id)
     {            
         $model = $this->model->find($id);
-        $perfis = Perfil::perfils_sem_permissao($id);
+        $perfis = $this->perfil->perfils_sem_permissao($id);
         return view("{$this->view}.perfis-add", compact('model','perfis'));
     }
 

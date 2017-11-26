@@ -33,7 +33,7 @@ trait AALPermissaoTrait
 
 
 
-    public static function permissos_sem_perfil($perfil_id)
+    public  function permissos_sem_perfil($perfil_id)
     {
         return $this->whereNotIn('id', function($query) use ($perfil_id){
             $query->select("permissao_perfils.permissao_id");

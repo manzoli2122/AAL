@@ -10,19 +10,21 @@ use Illuminate\Support\Facades\Config;
 class PerfilController extends StandardController
 {
  
-        protected $model;    
+        protected $model;   
+        protected $permissao; 
         protected $user; 
         protected $name = "Perfil";    
         protected $view = "autorizacao::perfis";    
         protected $route = "perfis";
         
         
-        public function __construct(Perfil $perfil){
+        public function __construct(Perfil $perfil , Permissao $permissao){
             
             $usuarioModelName = Config::get('auth.providers.users.model');
             $this->user = new $usuarioModelName();
             
             $this->model = $perfil;
+            $this->permissao = $permissao;
 
             $this->middleware('permissao:perfis');
             //$this->middleware('can:perfis_editar')->only(['edit' , 'update']);           
@@ -120,7 +122,7 @@ class PerfilController extends StandardController
         public function permissoesAdd($id)
         {            
             $model = $this->model->find($id);
-            $permissoes = Permissao::permissos_sem_perfil($id);    
+            $permissoes = $this->permissao->permissos_sem_perfil($id);    
             return view("{$this->view}.permissoes-add", compact('model','permissoes'));
         }
 
