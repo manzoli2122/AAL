@@ -61,7 +61,7 @@
 				</tr>
 				@forelse($model->perfis as $perfil)
 					<tr>
-						td>{{$perfil->nome}}</td>						
+						<td>{{$perfil->nome}}</td>						
 						<td><a href='{{route("permissoes.perfis.delete", [$model->id , $perfil->id])}}' class="delete"> <span class="glyphicon glyphicon-trash"></span> Deletar</a></td>						
 					</tr>
 				@empty                   

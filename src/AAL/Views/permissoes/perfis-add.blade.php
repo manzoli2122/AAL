@@ -36,7 +36,7 @@
             
             {!! Form::open(['route' => ['permissoes.perfis.add' , $model->id], 'class' => 'form form-search form-ds' ])!!}
     
-                <div class="row">
+                <div class="row listagem-checkbox">
                     @foreach($perfis as $perfil)
                         <div class="col-12 col-md-4 col-sm-4 col-xm-4">
                             <div class="form-group">
