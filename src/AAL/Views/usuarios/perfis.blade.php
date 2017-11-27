@@ -51,7 +51,7 @@
 					<th>Ações</th>					
 				</tr>
 
-				@forelse($perfis as $perfil)
+				@forelse($model->perfis as $perfil)
 					<tr>
 						<td>{{$perfil->nome}}</td>						
 						<td>

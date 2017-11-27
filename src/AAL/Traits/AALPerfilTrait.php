@@ -93,6 +93,26 @@ trait AALPerfilTrait
     }
 
 
+    public function perfils_sem_usuario($usuario_id, $isAdmin = false)
+    {
+        if($isAdmin){
+            return $this->whereNotIn('id', function($query) use ($usuario_id){
+                $query->select("perfils_users.perfil_id");
+                $query->from("perfils_users");
+                $query->whereRaw("perfils_users.user_id = {$usuario_id} ");
+            })->get();  
+        }
+        
+        
+        return $this->whereNotIn('id', function($query) use ($id){
+                    $query->select("perfils_users.perfil_id");
+                    $query->from("perfils_users");
+                    $query->whereRaw("perfils_users.user_id = {$id} ");
+                })
+                ->where('nome', '<>' , 'Admin')->get();
+        
+    }
+
 
 
     public static function boot()

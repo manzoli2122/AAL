@@ -15,12 +15,14 @@ class UserController extends Controller
     protected $totalPage = 10;
 
     private $user ;
+    protected $perfil ;
     
-    public function __construct(){
+    public function __construct(Perfil $perfil){
 
         $usuarioModelName = Config::get('auth.providers.users.model');
         $this->user = new $usuarioModelName();
-       
+        $this->perfil = $perfil;
+        $this->middleware('permissao:usuarios');
         //$this->middleware('can:usuarios');
        // $this->middleware('can:usuarios_perfis')->only(['perfis' , 'perfisAdd' , 'perfilAddUsuarios' , 'deletePerfil']);
     }
@@ -29,10 +31,8 @@ class UserController extends Controller
     
     public function index()
     {
-
-        $title = 'Listagem dos usuarios';
         $users = $this->user::paginate($this->totalPage);
-        return view('autorizacao::usuarios.index', compact('users', 'title'));
+        return view('autorizacao::usuarios.index', compact('users'));
     }
 
    
@@ -69,39 +69,17 @@ class UserController extends Controller
     public function perfis($id)
     {        
         $model = $this->user->find($id);
-        $perfis = $model->perfis()->paginate($this->totalPage);
-        $title = "Perfils do {$model->name}";
-        return view("autorizacao::usuarios.perfis", compact('model','perfis','title'));
+        return view("autorizacao::usuarios.perfis", compact('model'));
     }
 
 
 
     
     public function perfisAdd($id)
-    {            
+    {    
         $model = $this->user->find($id);
-
-
-        $usuario = $this->user->find(Auth::user()->getKey());
-
-
-        if($usuario->hasPerfil('Admin')){
-            $perfis = Perfil::whereNotIn('id', function($query) use ($id){
-                        $query->select("perfils_users.perfil_id");
-                        $query->from("perfils_users");
-                        $query->whereRaw("perfils_users.user_id = {$id} ");
-                    })->get();
-            return view("autorizacao::usuarios.perfis-add", compact('model','perfis'));
-        }
-
-        $perfis = Perfil::whereNotIn('id', function($query) use ($id){
-                        $query->select("perfils_users.perfil_id");
-                        $query->from("perfils_users");
-                        $query->whereRaw("perfils_users.user_id = {$id} ");
-                    })
-                    ->where('nome', '<>' , 'Admin')->get();
-        
-        return view("autorizacao::usuarios.perfis-add", compact('model','perfis'));
+        $perfis = $this->perfil->perfils_sem_usuario($id, Auth::user()->hasPerfil('Admin'));
+        return view("autorizacao::usuarios.perfis-add", compact('model','perfis'));  
     }
 
 
@@ -113,12 +91,10 @@ class UserController extends Controller
         
         $model = $this->user->find($id);  
         foreach ($request->get('perfis') as  $value) {
-            $perfil = Perfil::find($value);
+            $perfil = $this->perfil->find($value);
             if( $perfil->nome != 'Admin' or Auth::user()->hasPerfil('Admin'))
-                $model->perfis()->attach($value);
+                $model->attachPerfil($value);
         }
-
-        //$model->perfis()->attach($request->get('perfis'));
         return redirect()->route('autorizacao.users.perfis' ,$id)->with(['success' => 'Perfis vinculados com sucesso']);
     }
 
@@ -128,16 +104,12 @@ class UserController extends Controller
 
     
     public function deletePerfil($id,$perfilId)
-    {
-        
+    {        
         $model = $this->user->find($id);
-
-        $perfil = Perfil::find($perfilId);
-
+        $perfil = $this->perfil->find($perfilId);
         if( $perfil->nome == 'Admin' and ! Auth::user()->hasPerfil('Admin'))
             return redirect()->route('autorizacao.users.perfis' ,$id)->with(['error' => 'Perfil não pode ser Removido']);
-
-        $model->perfis()->detach($perfilId);   
+        $model->detachPerfil($perfilId);   
 
         return redirect()->route('autorizacao.users.perfis' ,$id)->with(['success' => 'Perfil Removido com sucesso']);
     }
