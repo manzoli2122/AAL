@@ -15,13 +15,6 @@
 @section('menuLateral')
 		<div class="col-sm-3 col-md-2 menu-lateral-salao " >
             <ul class="nav nav-pills flex-column">
-               
-                    <li class="nav-item">
-                        <a class="nav-link botao-menu-lateral" href="{{ route('users.create') }}">                            
-                            Cadastrar Usuario
-                        </a>
-                    </li>
-				
             </ul>
         </div>  
 @endsection
