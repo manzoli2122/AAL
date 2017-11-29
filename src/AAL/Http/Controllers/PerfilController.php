@@ -22,6 +22,12 @@ class PerfilController extends StandardController
             
             $usuarioModelName = Config::get('auth.providers.users.model');
             $this->user = new $usuarioModelName();
+
+            //$perfilModelName = Config::get('aal.perfil');
+            //$this->model = new $perfilModelName();
+
+            //$permissaoModelName = Config::get('aal.permissao');
+            //$this->permissao = new $permissaoModelName();
             
             $this->model = $perfil;
             $this->permissao = $permissao;

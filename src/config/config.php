@@ -4,7 +4,7 @@
 return [
 
    
-    //'perfil' => 'App\Perfil',
+    'perfil' => 'Manzoli2122\AAL\Models\Perfil',
 
    
     'perfis_table' => 'perfils',
@@ -27,7 +27,7 @@ return [
     //'usuario_foreign_key' => 'user_id',
 
     
-    //'permissao' => 'App\Permissao',
+    'permissao' => 'Manzoli2122\AAL\Models\Permissao',
 
     
     

@@ -34,7 +34,7 @@
         
         <div class="col-11 col-sm-11">         
 
-            {!! Form::open(['route' => ['autorizacao.users.perfis.add' , $model->id], 'class' => 'form form-search form-ds'])!!}
+            {!! Form::open(['route' => ['autorizacao_users.perfis.add' , $model->id], 'class' => 'form form-search form-ds'])!!}
                 <div class="row listagem-checkbox">
                     @foreach($perfis as $perfil)
                         

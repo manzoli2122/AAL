@@ -5,6 +5,7 @@ namespace  Manzoli2122\AAL\Http\Controllers;
 use Illuminate\Http\Request;
 use Manzoli2122\AAL\Models\Permissao;
 use Manzoli2122\AAL\Models\Perfil;  
+use Illuminate\Support\Facades\Config; 
 
 class PermissaoController extends StandardController
 {
@@ -18,7 +19,17 @@ class PermissaoController extends StandardController
     
     
     public function __construct(Permissao $permissao , Perfil $perfil){
+        
+        //$perfilModelName = Config::get('aal.perfil');
+        //$this->perfil = new $perfilModelName();
+
+        //$permissaoModelName = Config::get('aal.permissao');
+        //$this->model = new $permissaoModelName();
+        
+        
+        
         $this->model = $permissao;
+        
         $this->perfil = $perfil;
         $this->middleware('permissao:permissoes');
         //$this->middleware('can:permissoes_editar')->only(['edit' , 'update']);
@@ -52,7 +63,7 @@ class PermissaoController extends StandardController
     {        
         $model = $this->model->find($id);        
         $model->detachPerfil($perfilId); 
-        return redirect()->route('permissoes.perfis' ,$id)->with(['success' => 'Perfil Removido com sucesso']);
+        return redirect()->route("{$this->route}.perfis" ,$id)->with(['success' => 'Perfil Removido com sucesso']);
     }
 
 
@@ -61,7 +72,7 @@ class PermissaoController extends StandardController
     {        
         $model = $this->model->find($id);        
         $model->attachPerfil($request->get('perfis'));            
-        return redirect()->route('permissoes.perfis' ,$id)->with(['success' => 'Perfis vinculados com sucesso']);
+        return redirect()->route("{$this->route}.perfis" ,$id)->with(['success' => 'Perfis vinculados com sucesso']);
     }
 
 

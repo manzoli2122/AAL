@@ -3,7 +3,7 @@
 
 
 @section('pesquisar')				
-	{!! Form::open(['route' => 'autorizacao.users.pesquisar', 'class' =>  'form-inline mt-2 mt-md-0']) !!}
+	{!! Form::open(['route' => 'autorizacao_users.pesquisar', 'class' =>  'form-inline mt-2 mt-md-0']) !!}
         {!! Form::text('key' , null , ['class' => 'form-control mr-sm-2' , 'placeholder' => 'Pesquisar Usuarios' ]) !!}		
 		<button  class="btn btn-outline-success my-2 my-sm-0 botao-pesquisar" type="submit">
 			<i class="fa fa-search" aria-hidden="true"></i>
@@ -44,7 +44,7 @@
 				</tr>
 				@forelse($users as $user)
 					<tr>
-						<td><a href='{{route("users.show", $user->id)}}' class="delete"> <span class="glyphicon glyphicon-eye-open"></span> {{$user->name}}</a>
+						<td><a href='{{route("autorizacao_users.show", $user->id)}}' class="delete"> <span class="glyphicon glyphicon-eye-open"></span> {{$user->name}}</a>
 						</td>
 						<td>{{$user->email}}</td>						
 					</tr>

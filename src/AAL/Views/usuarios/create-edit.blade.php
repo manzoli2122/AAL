@@ -35,9 +35,9 @@
         <div class="col-11 col-sm-11">
 
             @if( isset($user))
-                {!! Form::model($user , ['route' => ['usuarios.update' , $user->id], 'method' => 'PUT' ,  'class' => 'form form-search form-ds', 'files' => true])!!}
+                {!! Form::model($user , ['route' => ['autorizacao_users.update' , $user->id], 'method' => 'PUT' ,  'class' => 'form form-search form-ds', 'files' => true])!!}
             @else
-                {!! Form::open(['url' => '/painel/usuarios', 'class' => 'form form-search form-ds', 'files' => true])!!}
+                {!! Form::open(['route' => 'autorizacao_users.store', 'class' => 'form form-search form-ds', 'files' => true])!!}
 			@endif
 				<div class="form-group">
                     {!! Form::text('name' , null , ['placeholder' => 'Nome', 'class' => 'form-control'])!!}

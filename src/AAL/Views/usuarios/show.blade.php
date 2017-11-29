@@ -6,7 +6,7 @@
             <ul class="nav nav-pills flex-column">               
 								
                     <li class="nav-item">
-                        <a class="nav-link  botao-menu-lateral" href="{{ route("autorizacao.users.perfis", $user->id) }}">                            
+                        <a class="nav-link  botao-menu-lateral" href="{{ route("autorizacao_users.perfis", $user->id) }}">                            
                             Perfis
                         </a>
                     </li>

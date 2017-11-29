@@ -3,7 +3,7 @@
 
 
 @section('pesquisar')
-	{!! Form::open(['route' => ['autorizacao.users.perfis.pesquisar', $model->id ], 'class' =>  'form-inline mt-2 mt-md-0']) !!}
+	{!! Form::open(['route' => ['autorizacao_users.perfis.pesquisar', $model->id ], 'class' =>  'form-inline mt-2 mt-md-0']) !!}
         {!! Form::text('key' , null , ['class' => 'form-control' , 'placeholder' => 'Nome' , 'style' => 'min-width: 400px;']) !!}
 		<button class="btn btn-outline-success my-2 my-sm-0 botao-pesquisar" type="submit">
 			<i class="fa fa-search" aria-hidden="true"></i>
@@ -17,7 +17,7 @@
             <ul class="nav nav-pills flex-column">               
 				
                     <li class="nav-item">
-                        <a class="nav-link botao-menu-lateral" href="{{route('autorizacao.users.perfis.cadastrar', $model->id ) }}">                            
+                        <a class="nav-link botao-menu-lateral" href="{{route('autorizacao_users.perfis.cadastrar', $model->id ) }}">                            
                             Adicionar Permissão
                         </a>
                     </li>x			
@@ -55,7 +55,7 @@
 					<tr>
 						<td>{{$perfil->nome}}</td>						
 						<td>
-							<a href='{{route("autorizacao.users.perfis.delete", [$model->id , $perfil->id])}}' class="delete"> <span class="glyphicon glyphicon-trash"></span> Deletar</a>
+							<a href='{{route("autorizacao_users.perfis.delete", [$model->id , $perfil->id])}}' class="delete"> <span class="glyphicon glyphicon-trash"></span> Deletar</a>
 						</td>
 					</tr>
 				@empty                   
