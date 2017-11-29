@@ -99,9 +99,13 @@ class User extends Authenticatable
  
 php artisan db:seed
 
+php artisan make:auth
 
-
-
+If you want to use Middleware (requires Laravel 5.1 or later) you also need to add the following:
+    'perfil' => \Manzoli2122\AAL\Middleware\AALPerfil::class,
+    'permissao' => \Manzoli2122\AAL\Middleware\AALPermissao::class,
+    
+    
 
 
 
