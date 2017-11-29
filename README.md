@@ -44,7 +44,7 @@ php artisan aal:migration
 php artisan migrate
 ```
 
-6) Abra o `config/auth.php` e adicione o seguinte:
+6) Abra o `app/Http/Kernel.php` e adicione o seguinte ao array `routeMiddleware` (requer Laravel 5.1 ou posterior):
 
 ```php
 'perfil' => \Manzoli2122\AAL\Middleware\AALPerfil::class,
