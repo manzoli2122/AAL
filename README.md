@@ -71,6 +71,54 @@ class User extends Authenticatable
 }
 ```
 
+
+```php
+        use Manzoli2122\AAL\Models\Perfil;
+        use App\User;
+
+
+        $user = new User();
+        $user->name = 'Bruno manzoli do Nascimento';
+        //$user->apelido = 'Bruno';
+        $user->email = 'manzoli2122@gmail.com';
+        $user->password = bcrypt('senha123');
+        $user->save();
+
+
+
+
+    	$perfil = new Perfil();
+        $perfil->nome = 'Admin';
+        $perfil->descricao = 'Super Usuario';
+        $perfil->save();
+
+
+        $user->perfis()->attach($perfil->id);
+         
+ ```
+ 
+php artisan db:seed
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 This will enable the relation with `Role` and add the following methods `roles()`, `hasRole($name)`, `withRole($name)`, `can($permission)`, and `ability($roles, $permissions, $options)` within your `User` model.
 
 Don't forget to dump composer autoload
