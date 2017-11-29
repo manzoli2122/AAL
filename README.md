@@ -38,10 +38,13 @@ Manzoli2122\AAL\AALServiceProvider::class,
 
 
 php artisan vendor:publish
-
-
-
 php artisan aal:migration
+
+
+
+Open your `config/auth.php` and add the following to it:
+
+
 
         'perfil' => \Manzoli2122\AAL\Middleware\AALPerfil::class,
         'permissao' => \Manzoli2122\AAL\Middleware\AALPermissao::class,
@@ -71,21 +74,20 @@ class User extends Authenticatable
 }
 ```
 
+Open your `database/seeds/DatabaseSeeder.php` and add the following to it:
 
 ```php
         use Manzoli2122\AAL\Models\Perfil;
         use App\User;
+```
 
+```php
 
         $user = new User();
-        $user->name = 'Bruno manzoli do Nascimento';
-        //$user->apelido = 'Bruno';
-        $user->email = 'manzoli2122@gmail.com';
+        $user->name = 'Usuario Admnistrador';
+        $user->email = 'user.admin@gmail.com';
         $user->password = bcrypt('senha123');
         $user->save();
-
-
-
 
     	$perfil = new Perfil();
         $perfil->nome = 'Admin';
