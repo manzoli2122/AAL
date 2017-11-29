@@ -17,7 +17,7 @@
 ```
 
 ```json
-"manzoli2122/aal": "*"
+"manzoli2122/aal": "dev-master"
 ```
 
 
