@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class AALSetupTables extends Migration
+class AalSetupPerfilPermissaoTables extends Migration
 {
    
 
