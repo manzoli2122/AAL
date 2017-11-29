@@ -33,14 +33,19 @@ Manzoli2122\AAL\AALServiceProvider::class,
 php artisan vendor:publish ???
 
 4) Excute o comando abaixo para gerar a migration das tabelas perfis e pemissoes:
-php artisan aal:migration
 
+```json
+php artisan aal:migration
+```
 
 5) Configure a conexão com banco de dados e excute o comando para criar as tabelas:
-php artisan migrate
 
+```json
+php artisan migrate
+```
 
 6) Abra o `config/auth.php` e adicione o seguinte:
+
 ```php
 'perfil' => \Manzoli2122\AAL\Middleware\AALPerfil::class,
 'permissao' => \Manzoli2122\AAL\Middleware\AALPermissao::class,
@@ -85,12 +90,16 @@ class User extends Authenticatable
  ```
  
  9) excute o seguinte comando para criar o usuario e o perfil configurado acima: 
-php artisan db:seed
 
+```json
+php artisan db:seed
+```
 
 10) Excute o seguinte comando: 
-php artisan make:auth
 
+```json
+php artisan make:auth
+```
 
 
 
