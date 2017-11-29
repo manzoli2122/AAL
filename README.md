@@ -1,12 +1,10 @@
 # AAL - Autenticação e Autorização Laravel
 
-
 [![Latest Stable Version](https://poser.pugx.org/manzoli2122/all/v/stable)](https://packagist.org/packages/manzoli2122/all)
 [![Latest Unstable Version](https://poser.pugx.org/manzoli2122/all/v/unstable)](https://packagist.org/packages/manzoli2122/all)
 [![License](https://poser.pugx.org/manzoli2122/all/license)](https://packagist.org/packages/manzoli2122/all)
 [![Total Downloads](https://poser.pugx.org/manzoli2122/all/downloads)](https://packagist.org/packages/manzoli2122/all)
 [![composer.lock](https://poser.pugx.org/manzoli2122/all/composerlock)](https://packagist.org/packages/manzoli2122/all)
-
 
 ## Instalação
 
@@ -20,8 +18,6 @@
 "manzoli2122/aal": "dev-master"
 ```
 
-
-
 2) Abra seu `config/app.php`  e adicione o seguinte ao array  `providers`:
 
 ```php
@@ -34,26 +30,29 @@ Manzoli2122\AAL\AALServiceProvider::class,
 'AAL'   => Manzoli2122\AAL\AALFacade::class,
 ```
 
+php artisan vendor:publish ???
 
+4) Excute o comando abaixo para gerar a migration das tabelas perfis e pemissoes:
 
-
-php artisan vendor:publish
-
-
-
+```json
 php artisan aal:migration
+```
 
-        'perfil' => \Manzoli2122\AAL\Middleware\AALPerfil::class,
-        'permissao' => \Manzoli2122\AAL\Middleware\AALPermissao::class,
-        //'ability' => \Manzoli2122\AAL\Middleware\AALAbility::class,
+5) Configure a conexão com banco de dados e excute o comando para criar as tabelas:
+
+```json
+php artisan migrate
+```
+
+6) Abra o `app/Http/Kernel.php` e adicione o seguinte ao array `routeMiddleware` (requer Laravel 5.1 ou posterior):
+
+```php
+'perfil' => \Manzoli2122\AAL\Middleware\AALPerfil::class,
+'permissao' => \Manzoli2122\AAL\Middleware\AALPermissao::class,
+```
 
 
-### Models
-
-
-#### User
-
-Use `AALUsuarioTrait` trait na classe `User`. por exemplo:
+7) Adicione o seguinte codigo na sua classe User
 
 ```php
 <?php
@@ -68,13 +67,45 @@ class User extends Authenticatable
 }
 ```
 
-This will enable the relation with `Role` and add the following methods `roles()`, `hasRole($name)`, `withRole($name)`, `can($permission)`, and `ability($roles, $permissions, $options)` within your `User` model.
+8) Abra `database/seeds/DatabaseSeeder.php` e adicione o seguinte codigo:
 
-Don't forget to dump composer autoload
+```php
+        use Manzoli2122\AAL\Models\Perfil;
+        use App\User;
+```
 
+```php
+        $user = new User();
+        $user->name = 'Usuario Admnistrador';
+        $user->email = 'user.admin@gmail.com';
+        $user->password = bcrypt('senha123');
+        $user->save();
+
+    	$perfil = new Perfil();
+        $perfil->nome = 'Admin';
+        $perfil->descricao = 'Super Usuario';
+        $perfil->save();
+
+        $user->perfis()->attach($perfil->id);         
+ ```
+ 
+ 9) excute o seguinte comando para criar o usuario e o perfil configurado acima: 
+
+```json
+php artisan db:seed
+```
+
+10) Excute o seguinte comando: 
+
+```json
+php artisan make:auth
+```
+
+
+
+
+Não esqueça do:
 ```bash
 composer dump-autoload
 ```
-
-**And you are ready to go.**
 
