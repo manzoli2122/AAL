@@ -48,6 +48,9 @@ php artisan aal:migration
         //'ability' => \Manzoli2122\AAL\Middleware\AALAbility::class,
 
 
+
+php artisan migrate
+
 ### Models
 
 
