@@ -223,9 +223,6 @@ trait AALUsuarioTrait
             $checkedPermissoes[$permissao] = $this->can($permissao);
         }
 
-        // If validate all and there is a false in either
-        // Check that if validate all, then there should not be any false.
-        // Check that if not validate all, there must be at least one true.
         if(($options['validate_all'] && !(in_array(false,$checkedPerfis) || in_array(false,$checkedPermissoes))) ||
             (!$options['validate_all'] && (in_array(true,$checkedPerfis) || in_array(true,$checkedPermissoes)))) {
             $validateAll = true;

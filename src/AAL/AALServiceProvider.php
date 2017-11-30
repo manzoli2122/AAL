@@ -17,7 +17,7 @@ class AALServiceProvider extends ServiceProvider
         // Publish config files
         $this->publishes([
             __DIR__.'/../config/config.php' =>  config_path('aal.php'), 
-        ]);
+        ], 'autorizacao_config');
 
         $this->mapWebRoutes();
         
@@ -30,7 +30,7 @@ class AALServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__.'/Views/Assets' => public_path('vendor/autorizacao'),
-        ], 'public');
+        ], 'autorizacao_public');
 
 
 

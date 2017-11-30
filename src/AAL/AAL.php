@@ -5,16 +5,13 @@ namespace Manzoli2122\AAL;
 class AAL
 {
    
-
     public $app;
-
 
     public function __construct($app)
     {
         $this->app = $app;
     }
-
-   
+  
 
 
     public function hasPerfil($perfil, $requireAll = false)
@@ -22,7 +19,6 @@ class AAL
         if ($usuario = $this->usuario()) {
             return $usuario->hasPerfil($perfil, $requireAll);
         }
-
         return false;
     }
 
@@ -34,7 +30,6 @@ class AAL
         if ($usuario = $this->usuario()) {
             return $usuario->can($permissao, $requireAll);
         }
-
         return false;
     }
 
