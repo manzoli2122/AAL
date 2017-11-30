@@ -3,8 +3,8 @@
 namespace  Manzoli2122\AAL\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Manzoli2122\AAL\Models\Perfil;
-use Manzoli2122\AAL\Models\Permissao; 
+//use Manzoli2122\AAL\Models\Perfil;
+//use Manzoli2122\AAL\Models\Permissao; 
 use Illuminate\Support\Facades\Config; 
 
 class PerfilController extends StandardController
@@ -18,22 +18,23 @@ class PerfilController extends StandardController
         protected $route = "perfis";
         
         
-        public function __construct(Perfil $perfil , Permissao $permissao){
-            
+        //public function __construct(Perfil $perfil , Permissao $permissao){
+        public function __construct(){
+
             $usuarioModelName = Config::get('auth.providers.users.model');
             $this->user = new $usuarioModelName();
 
-            //$perfilModelName = Config::get('aal.perfil');
-            //$this->model = new $perfilModelName();
+            $perfilModelName = Config::get('aal.perfil');
+            $this->model = new $perfilModelName();
 
-            //$permissaoModelName = Config::get('aal.permissao');
-            //$this->permissao = new $permissaoModelName();
+            $permissaoModelName = Config::get('aal.permissao');
+            $this->permissao = new $permissaoModelName();
             
-            $this->model = $perfil;
-            $this->permissao = $permissao;
+            //$this->model = $perfil;
+            //$this->permissao = $permissao;
 
             $this->middleware('permissao:perfis');
-            //$this->middleware('can:perfis_editar')->only(['edit' , 'update']);           
+                     
             
         }
 
@@ -66,7 +67,7 @@ class PerfilController extends StandardController
         {            
             $model = $this->model->find($id);            
             $model->detachUsuario($userId); 
-            return redirect()->route('perfis.usuarios' ,$id)->with(['success' => 'Usuarios Removido com sucesso']);
+            return redirect()->route("{$this->route}.usuarios" ,$id)->with(['success' => 'Usuarios Removido com sucesso']);
         }
 
 
@@ -75,7 +76,7 @@ class PerfilController extends StandardController
         {            
             $model = $this->model->find($id);            
             $model->attachUsuario($request->get('users'));            
-            return redirect()->route('perfis.usuarios' ,$id)->with(['success' => 'Usuarios vinculados com sucesso']);
+            return redirect()->route("{$this->route}.usuarios" ,$id)->with(['success' => 'Usuarios vinculados com sucesso']);
         }
 
 
@@ -138,7 +139,7 @@ class PerfilController extends StandardController
         {            
             $model = $this->model->find($id);            
             $model->detachPermissao($permissaoId); 
-            return redirect()->route('perfis.permissoes' ,$id)->with(['success' => 'Permissa Removida com sucesso']);
+            return redirect()->route("{$this->route}.permissoes" ,$id)->with(['success' => 'Permissa Removida com sucesso']);
         }
 
 
@@ -147,7 +148,7 @@ class PerfilController extends StandardController
         {            
             $model = $this->model->find($id);            
             $model->attachPermissao($request->get('permissoes'));            
-            return redirect()->route('perfis.permissoes' ,$id)->with(['success' => 'Permissoes vinculados com sucesso']);
+            return redirect()->route("{$this->route}.permissoes" ,$id)->with(['success' => 'Permissoes vinculados com sucesso']);
         }
 
 
