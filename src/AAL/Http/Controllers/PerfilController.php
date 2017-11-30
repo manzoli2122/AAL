@@ -3,9 +3,8 @@
 namespace  Manzoli2122\AAL\Http\Controllers;
 
 use Illuminate\Http\Request;
-//use Manzoli2122\AAL\Models\Perfil;
-//use Manzoli2122\AAL\Models\Permissao; 
 use Illuminate\Support\Facades\Config; 
+use Auth;
 
 class PerfilController extends StandardController
 {
@@ -18,7 +17,7 @@ class PerfilController extends StandardController
         protected $route = "perfis";
         
         
-        //public function __construct(Perfil $perfil , Permissao $permissao){
+        
         public function __construct(){
 
             $usuarioModelName = Config::get('auth.providers.users.model');
@@ -30,15 +29,9 @@ class PerfilController extends StandardController
             $permissaoModelName = Config::get('aal.permissao');
             $this->permissao = new $permissaoModelName();
             
-            //$this->model = $perfil;
-            //$this->permissao = $permissao;
-
-            $this->middleware('permissao:perfis');
-                     
+            $this->middleware('permissao:perfis');                     
             
         }
-
-
 
 
 
@@ -54,7 +47,7 @@ class PerfilController extends StandardController
 
 
 
-        public function usuariosAdd($id)
+        public function usuariosParaAdd($id)
         {            
             $model = $this->model->find($id);
             $users =$this->user->usuarios_sem_perfil($id);
@@ -63,21 +56,28 @@ class PerfilController extends StandardController
 
 
         
+
         public function deleteUser($id,$userId)
         {            
-            $model = $this->model->find($id);            
-            $model->detachUsuario($userId); 
+            $model = $this->model->find($id);  
+            if($model->nome != 'Admin' or Auth::user()->hasPerfil('Admin'))          
+                $model->detachUsuario($userId); 
             return redirect()->route("{$this->route}.usuarios" ,$id)->with(['success' => 'Usuarios Removido com sucesso']);
         }
 
 
 
-        public function usuariosAddPerfil(Request $request , $id)
+
+        public function addUsuarios(Request $request , $id)
         {            
-            $model = $this->model->find($id);            
-            $model->attachUsuario($request->get('users'));            
+            $model = $this->model->find($id); 
+            if($model->nome != 'Admin' or Auth::user()->hasPerfil('Admin'))
+                $model->attachUsuario($request->get('users'));            
             return redirect()->route("{$this->route}.usuarios" ,$id)->with(['success' => 'Usuarios vinculados com sucesso']);
         }
+
+
+
 
 
         public function pesquisarUsuarios(Request $request , $id)
@@ -126,7 +126,7 @@ class PerfilController extends StandardController
 
 
 
-        public function permissoesAdd($id)
+        public function permissoesParaAdd($id)
         {            
             $model = $this->model->find($id);
             $permissoes = $this->permissao->permissos_sem_perfil($id);    
@@ -144,13 +144,18 @@ class PerfilController extends StandardController
 
 
 
-        public function permissoesAddPerfil(Request $request , $id)
+
+
+        public function addPermissoes(Request $request , $id)
         {            
             $model = $this->model->find($id);            
             $model->attachPermissao($request->get('permissoes'));            
             return redirect()->route("{$this->route}.permissoes" ,$id)->with(['success' => 'Permissoes vinculados com sucesso']);
         }
 
+
+
+        
 
         public function pesquisarPemissoes(Request $request , $id)
         {            

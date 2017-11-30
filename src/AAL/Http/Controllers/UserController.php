@@ -4,7 +4,6 @@ namespace  Manzoli2122\AAL\Http\Controllers;
 
 use Illuminate\Console\Command;
 use Illuminate\Http\Request;
-use Manzoli2122\AAL\Models\Perfil;
 use Auth;
 
 use Illuminate\Support\Facades\Config;
@@ -24,10 +23,9 @@ class UserController extends Controller
         $usuarioModelName = Config::get('auth.providers.users.model');
         $this->user = new $usuarioModelName();
 
-        //$perfilModelName = Config::get('aal.perfil');
-        //$this->perfil = new $perfilModelName();
+        $perfilModelName = Config::get('aal.perfil');
+        $this->perfil = new $perfilModelName();
 
-        $this->perfil = $perfil;
         $this->middleware('permissao:usuarios');
     }
 
@@ -75,8 +73,12 @@ class UserController extends Controller
 
 
 
+
+
+
+
     
-    public function perfisAdd($id)
+    public function perfisParaAdd($id)
     {    
         $model = $this->user->find($id);
         $perfis = $this->perfil->perfils_sem_usuario($id, Auth::user()->hasPerfil('Admin'));
@@ -87,7 +89,7 @@ class UserController extends Controller
 
 
     
-    public function perfilAddUsuarios(Request $request , $id)
+    public function addPerfil(Request $request , $id)
     {        
         $model = $this->user->find($id);  
         foreach ($request->get('perfis') as  $value) {

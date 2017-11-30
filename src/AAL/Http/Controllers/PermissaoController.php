@@ -2,9 +2,7 @@
 
 namespace  Manzoli2122\AAL\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Manzoli2122\AAL\Models\Permissao;
-use Manzoli2122\AAL\Models\Perfil;  
+use Illuminate\Http\Request; 
 use Illuminate\Support\Facades\Config; 
 
 class PermissaoController extends StandardController
@@ -18,21 +16,16 @@ class PermissaoController extends StandardController
     protected $route = "permissoes";
     
     
-    public function __construct(Permissao $permissao , Perfil $perfil){
+    public function __construct(){
         
-        //$perfilModelName = Config::get('aal.perfil');
-        //$this->perfil = new $perfilModelName();
+        $perfilModelName = Config::get('aal.perfil');
+        $this->perfil = new $perfilModelName();
 
-        //$permissaoModelName = Config::get('aal.permissao');
-        //$this->model = new $permissaoModelName();
+        $permissaoModelName = Config::get('aal.permissao');
+        $this->model = new $permissaoModelName();
         
-        
-        
-        $this->model = $permissao;
-        
-        $this->perfil = $perfil;
         $this->middleware('permissao:permissoes');
-        //$this->middleware('can:permissoes_editar')->only(['edit' , 'update']);
+       
     }
 
 
@@ -50,13 +43,15 @@ class PermissaoController extends StandardController
 
 
 
-    public function perfisAdd($id)
+    public function perfisParaAdd($id)
     {            
         $model = $this->model->find($id);
         $perfis = $this->perfil->perfils_sem_permissao($id);
         return view("{$this->view}.perfis-add", compact('model','perfis'));
     }
 
+
+    
 
     
     public function deletePerfil($id,$perfilId)
@@ -68,12 +63,17 @@ class PermissaoController extends StandardController
 
 
 
-    public function perfilAddPermissao(Request $request , $id)
+
+
+    public function addPerfil(Request $request , $id)
     {        
         $model = $this->model->find($id);        
         $model->attachPerfil($request->get('perfis'));            
         return redirect()->route("{$this->route}.perfis" ,$id)->with(['success' => 'Perfis vinculados com sucesso']);
     }
+
+
+
 
 
     public function pesquisarPerfis(Request $request , $id)

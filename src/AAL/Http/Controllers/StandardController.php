@@ -12,9 +12,7 @@ class StandardController extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     protected $totalPage = 10;
-
     protected $upload = false;
-
 
 
     public function index()
@@ -47,7 +45,6 @@ class StandardController extends BaseController
         else {
             return redirect()->route("{$this->route}.create")->withErrors(['errors' =>'Erro no Cadastro'])->withInput();
         }
-
     }
 
 
