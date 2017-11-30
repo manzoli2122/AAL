@@ -1,8 +1,6 @@
 <?php 
 
-
 namespace Manzoli2122\AAL\Traits;
-
 
 use Illuminate\Cache\TaggableStore;
 use Illuminate\Support\Facades\Cache;
@@ -92,7 +90,7 @@ trait AALUsuarioTrait
 
     public function perfis()
     {
-        return $this->belongsToMany( 'Manzoli2122\AAL\Models\Perfil' , Config::get('aal.perfil_usuario_table'), Config::get('aal.usuario_foreign_key'), Config::get('aal.perfil_foreign_key'));
+        return $this->belongsToMany( Config::get('aal.perfil') , Config::get('aal.perfil_usuario_table'), Config::get('aal.usuario_foreign_key'), Config::get('aal.perfil_foreign_key'));
     }
 
 
@@ -132,10 +130,6 @@ trait AALUsuarioTrait
                     return false;
                 }
             }
-
-            // If we've made it this far and $requireAll is FALSE, then NONE of the perfis were found
-            // If we've made it this far and $requireAll is TRUE, then ALL of the perfis were found.
-            // Return the value of $requireAll;
             return $requireAll;
         } else {
             foreach ($this->cachedPerfis() as $perfil) {
@@ -144,7 +138,6 @@ trait AALUsuarioTrait
                 }
             }
         }
-
         return false;
     }
 
@@ -157,13 +150,11 @@ trait AALUsuarioTrait
 
     public function can($permissao, $requireAll = false)
     {
-        
-        
+                
         if($this->hasPerfil('Admin')){
             return true;
         }
-        
-        
+                
         if (is_array($permissao)) {
             foreach ($permissao as $permName) {
                 $hasPerm = $this->can($permName);
@@ -174,10 +165,6 @@ trait AALUsuarioTrait
                     return false;
                 }
             }
-
-            // If we've made it this far and $requireAll is FALSE, then NONE of the perms were found
-            // If we've made it this far and $requireAll is TRUE, then ALL of the perms were found.
-            // Return the value of $requireAll;
             return $requireAll;
         } else {
             foreach ($this->cachedPerfis() as $perfil) {
@@ -189,7 +176,6 @@ trait AALUsuarioTrait
                 }
             }
         }
-
         return false;
     }
 
@@ -197,7 +183,7 @@ trait AALUsuarioTrait
     
 
 
-
+/*
 
     public function ability($perfis, $permissoes, $options = [])
     {
@@ -258,7 +244,7 @@ trait AALUsuarioTrait
 
     }
 
-   
+   */
     
     
 
@@ -269,11 +255,6 @@ trait AALUsuarioTrait
         if(is_object($perfil)) {
             $perfil = $perfil->getKey();
         }
-
-        //if(is_array($perfil)) {
-        //    $perfil = $perfil['id'];
-       // }
-
         $this->perfis()->attach($perfil);
     }
 
@@ -287,11 +268,6 @@ trait AALUsuarioTrait
         if (is_object($perfil)) {
             $perfil = $perfil->getKey();
         }
-
-        //if (is_array($perfil)) {
-        //    $perfil = $perfil['id'];
-        //}
-
         $this->perfis()->detach($perfil);
     }
 

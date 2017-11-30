@@ -1,8 +1,6 @@
 <?php 
 
-
 namespace Manzoli2122\AAL\Traits;
-
 
 use Illuminate\Cache\TaggableStore;
 use Illuminate\Support\Facades\Config;
@@ -11,8 +9,17 @@ use Illuminate\Support\Facades\Cache;
 trait AALPerfilTrait
 {
 
-
-
+    public static function boot()
+    {
+        parent::boot();
+        static::deleting(function ($perfil) {
+            if (!method_exists( Config::get('aal.perfil') , 'bootSoftDeletes')) {
+                $perfil->usuarios()->sync([]);
+                $perfil->permissoes()->sync([]);
+            }
+            return true;
+        });
+    }
     
    
     public function cachedPermissoes()
@@ -68,15 +75,10 @@ trait AALPerfilTrait
         return $this->belongsToMany(Config::get('auth.providers.users.model'), Config::get('aal.perfil_usuario_table'), Config::get('aal.perfil_foreign_key'), Config::get('aal.usuario_foreign_key'));
     }
 
-  
-
-
-
-
 
     public function permissoes()
     {
-        return $this->belongsToMany('Manzoli2122\AAL\Models\Permissao', Config::get('aal.permissao_perfil_table'), Config::get('aal.perfil_foreign_key'), Config::get('aal.permissao_foreign_key'));
+        return $this->belongsToMany(Config::get('aal.permissao'), Config::get('aal.permissao_perfil_table'), Config::get('aal.perfil_foreign_key'), Config::get('aal.permissao_foreign_key'));
     }
 
    
@@ -115,19 +117,6 @@ trait AALPerfilTrait
 
 
 
-    public static function boot()
-    {
-        parent::boot();
-
-        static::deleting(function ($perfil) {
-            if (!method_exists( 'Manzoli2122\AAL\Models\Perfil' , 'bootSoftDeletes')) {
-                $perfil->usuarios()->sync([]);
-                $perfil->permissoes()->sync([]);
-            }
-
-            return true;
-        });
-    }
 
    
 
@@ -144,10 +133,6 @@ trait AALPerfilTrait
                     return false;
                 }
             }
-
-            // If we've made it this far and $requireAll is FALSE, then NONE of the permissaos were found
-            // If we've made it this far and $requireAll is TRUE, then ALL of the permissaos were found.
-            // Return the value of $requireAll;
             return $requireAll;
         } else {
             foreach ($this->cachedPermissoes() as $permissao) {
@@ -156,7 +141,6 @@ trait AALPerfilTrait
                 }
             }
         }
-
         return false;
     }
 
@@ -170,7 +154,6 @@ trait AALPerfilTrait
         } else {
             $this->permissoes()->detach();
         }
-
         if (Cache::getStore() instanceof TaggableStore) {
             Cache::tags(Config::get('aal.permissao_perfil_table'))->flush();
         }
@@ -185,9 +168,6 @@ trait AALPerfilTrait
         if (is_object($permissao)) {
             $permissao = $permissao->getKey();
         }
-        //if (is_array($permissao)) {
-        //    return $this->attachPermissoes($permissao);
-        //}
         $this->permissoes()->attach($permissao);
     }
 
@@ -200,9 +180,6 @@ trait AALPerfilTrait
         if (is_object($permissao)) {
             $permissao = $permissao->getKey();
         }
-        //if (is_array($permissao)) {
-        //    return $this->detachPermissoes($permissao);
-        //}
         $this->permissoes()->detach($permissao);
     }
 
@@ -237,9 +214,6 @@ trait AALPerfilTrait
         if (is_object($usuario)) {
             $usuario = $usuario->getKey();
         }
-        //if (is_array($usuario)) {
-        //    return $this->attachUsuarios($usuario);
-        //}
         $this->usuarios()->attach($usuario);
     }
 
@@ -252,9 +226,6 @@ trait AALPerfilTrait
         if (is_object($usuario)) {
             $usuario = $usuario->getKey();
         }
-        //if (is_array($usuario)) {
-        //    return $this->detachUsuarios($usuario);
-        //}
         $this->usuarios()->detach($usuario);
     }
 

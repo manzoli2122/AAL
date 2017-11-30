@@ -7,23 +7,17 @@ use Manzoli2122\AAL\Traits\AALPerfilTrait;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Database\Eloquent\Model;
 
-
 class Perfil extends Model implements AALPerfilInterface
 {    
 
-
     use AALPerfilTrait;
-
-    protected $table;
-    
+    protected $table;    
        
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
         $this->table = Config::get('aal.perfis_table');
     }
-
-     
     
     protected $fillable = [
             'nome', 'descricao', 
@@ -33,22 +27,11 @@ class Perfil extends Model implements AALPerfilInterface
     {
             return [
                 'nome' => 'required|min:3|max:100',
-                'descricao' => "required|min:0|max:100",     
+                'descricao' => "required|min:0|max:150",     
             ];
     }
 
-/*
-    public function usuarios()
-    {        
-        return $this->belongsToMany( 'App\Core\User' , 'perfils_users', 'perfil_id' , 'user_id'); 
-    }
 
-*/
-    public function permissoes()
-    {        
-        return $this->belongsToMany( 'Manzoli2122\AAL\Models\Permissao' , 'permissao_perfils' , 'perfil_id', 'permissao_id');
-        
-    }
     
     
 }

@@ -2,18 +2,14 @@
 
 namespace Manzoli2122\AAL\Traits;
 
-
 use Illuminate\Support\Facades\Config;
-
-
 
 trait AALPermissaoTrait
 {
-   
 
     public function perfis()
     {
-        return $this->belongsToMany( 'Manzoli2122\AAL\Models\Perfil' , 'permissao_perfils' ,'permissao_id', 'perfil_id' );
+        return $this->belongsToMany( Config::get('aal.perfil') , Config::get('aal.permissao_perfil_table') ,Config::get('aal.permissao_foreign_key'),  Config::get('aal.perfil_foreign_key') );
     }
 
    
@@ -24,7 +20,7 @@ trait AALPermissaoTrait
     {
         parent::boot();
         static::deleting(function($permissao) {
-            if (!method_exists( 'Manzoli2122\AAL\Models\Permissao', 'bootSoftDeletes')) {
+            if (!method_exists( Config::get('aal.permissao') , 'bootSoftDeletes')) {
                 $permissao->perfis()->sync([]);
             }
             return true;
@@ -51,9 +47,6 @@ trait AALPermissaoTrait
         if(is_object($perfil)) {
             $perfil = $perfil->getKey();
         }
-        //if(is_array($perfil)) {
-        //    return $this->attachPerfis($perfil);
-        //}
         $this->perfis()->attach($perfil);
 
     }
@@ -63,9 +56,6 @@ trait AALPermissaoTrait
         if (is_object($perfil)) {
             $perfil = $perfil->getKey();
         }
-        //if (is_array($perfil)) {
-        //    return $this->detachPerfis($perfil);
-        //}
         $this->perfis()->detach($perfil);
     }
     
