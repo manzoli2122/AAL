@@ -18,7 +18,7 @@ class UserController extends Controller
     protected $view  = "autorizacao::usuarios";    
     protected $route = "autorizacao_users";
     
-    public function __construct(Perfil $perfil){
+    public function __construct(){
 
         $usuarioModelName = Config::get('auth.providers.users.model');
         $this->user = new $usuarioModelName();
