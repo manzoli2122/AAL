@@ -35,7 +35,7 @@ use Illuminate\Support\Facades\Route;
         Route::any('users/{id}/perfis/pesquisar', 'UserController@pesquisarPerfis')->name('autorizacao_users.perfis.pesquisar');
         Route::get('users/{id}/perfis', 'UserController@perfis')->name('autorizacao_users.perfis');
         Route::any('users/pesquisar', 'UserController@pesquisar')->name('autorizacao_users.pesquisar');
-        Route::resource('autorizacao_users', 'UserController');
+        Route::resource('autorizacao_users', 'UserController')->only(['index', 'show']);
 
         
 

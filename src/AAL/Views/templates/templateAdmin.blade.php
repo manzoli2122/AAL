@@ -31,7 +31,7 @@
           		<ul class="navbar-nav mr-auto">
 					
 						<li class="nav-item ">
-							<a class="nav-link active" href="{{ route('users.index') }}"> <span class="sr-only">(current)</span>
+							<a class="nav-link active" href="{{ route('autorizacao_users.index') }}"> <span class="sr-only">(current)</span>
 								<i class="fa fa-id-card" aria-hidden="true"></i>
 								Usuários
 							</a>
