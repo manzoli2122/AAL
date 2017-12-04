@@ -2,9 +2,9 @@
 
 namespace Manzoli2122\AAL\Traits;
 
-use Illuminate\Cache\TaggableStore;
+//use Illuminate\Cache\TaggableStore;
 use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\Cache;
+//use Illuminate\Support\Facades\Cache;
 
 trait AALPerfilTrait
 {
@@ -24,13 +24,15 @@ trait AALPerfilTrait
    
     public function cachedPermissoes()
     {
-        $perfilPrimaryKey = $this->primaryKey;
+        /*$perfilPrimaryKey = $this->primaryKey;
         $cacheKey = 'aal_permissoes_for_perfil_' . $this->$perfilPrimaryKey;
         if (Cache::getStore() instanceof TaggableStore) {
             return Cache::tags(Config::get('aal.permissao_perfil_table'))->remember($cacheKey, Config::get('cache.ttl', 60), function () {
                 return $this->permissoes()->get();
             });
-        } else return $this->permissoes()->get();
+        } else 
+        */
+        return $this->permissoes()->get();
     }
 
     public function save(array $options = [])
@@ -38,9 +40,9 @@ trait AALPerfilTrait
         if (!parent::save($options)) {
             return false;
         }
-        if (Cache::getStore() instanceof TaggableStore) {
+        /*if (Cache::getStore() instanceof TaggableStore) {
             Cache::tags(Config::get('aal.permissao_perfil_table'))->flush();
-        }
+        }*/
         return true;
     }
 
@@ -49,9 +51,11 @@ trait AALPerfilTrait
         if (!parent::delete($options)) {
             return false;
         }
+        /*
         if (Cache::getStore() instanceof TaggableStore) {
             Cache::tags(Config::get('aal.permissao_perfil_table'))->flush();
         }
+        */
         return true;
     }
 
@@ -60,9 +64,11 @@ trait AALPerfilTrait
         if (!parent::restore()) {
             return false;
         }
+        /*
         if (Cache::getStore() instanceof TaggableStore) {
             Cache::tags(Config::get('aal.permissao_perfil_table'))->flush();
         }
+        */
         return true;
     }
 
@@ -154,9 +160,10 @@ trait AALPerfilTrait
         } else {
             $this->permissoes()->detach();
         }
+        /*
         if (Cache::getStore() instanceof TaggableStore) {
             Cache::tags(Config::get('aal.permissao_perfil_table'))->flush();
-        }
+        }*/
     }
 
     
