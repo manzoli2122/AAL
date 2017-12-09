@@ -1,5 +1,20 @@
-@extends('autorizacao::templates.templateAdminLateral')
+@extends( Config::get('aal.templateMaster' , 'templates.templateMaster')  )
 
+
+@section( Config::get('aal.templateMasterMenuLateral' , 'menuLateral')  )
+			
+					<li>
+						<a href="{{route('perfis.permissoes.cadastrar', $model->id ) }}"><i class="fa fa-circle-o text-blue">
+							</i><span> Adicionar Permissão</span>
+						</a>
+					</li>				
+@endsection
+
+
+
+@section( Config::get('aal.templateMasterContentTitulo' , 'titulo-page')  )
+			Permissoes do Perfil {{$model->nome}}			
+@endsection
 
 
 
@@ -13,30 +28,10 @@
 @endsection
 
 
-@section('menuLateral')
-		<div class="col-sm-3 col-md-2 menu-lateral-salao " >
-            <ul class="nav nav-pills flex-column">
 
-                    <li class="nav-item">
-                        <a class="nav-link botao-menu-lateral" href="{{route('perfis.permissoes.cadastrar', $model->id ) }}">                            
-                            Adicionar Permissão
-                        </a>
-                    </li>				
-				
-            </ul>
-        </div>  
-@endsection
+@section( Config::get('aal.templateMasterContent' , 'contentMaster')  )
 
-
-
-@section('content')
-
-	<section class="row text-center  titulo-pagina">
-        <div class="col-12 col-sm-12 titulo">
-			<h5>Permissoes do Perfil {{$model->nome}}</h5>
-        </div>        
-    </section>
-
+	
 
 	
 	<section class="row text-center Listagens">

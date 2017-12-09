@@ -1,15 +1,14 @@
 @extends( Config::get('aal.templateMaster' , 'templates.templateMaster')  )
 
 
+@section( Config::get('aal.templateMasterContentTitulo' , 'titulo-page')  )
+			Cadastrar / Editar Permissão				
+@endsection
+
 
 @section( Config::get('aal.templateMasterContent' , 'contentMaster')  )
 
-    <section class="row text-center  titulo-pagina">
-        <div class="col-12 col-sm-12 titulo">
-			<h5>Cadastrar / Editar Permissão</h5>
-        </div>        
-    </section>
-
+   
 
     <section class="row text-center errors">
         <div class="col-12 col-sm-12 error">

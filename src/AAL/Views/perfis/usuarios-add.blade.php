@@ -1,22 +1,12 @@
-@extends('autorizacao::templates.templateAdminLateral')
+@extends( Config::get('aal.templateMaster' , 'templates.templateMaster')  )
 
 
-
-@section('menuLateral')
-		<div class="col-sm-3 col-md-2 menu-lateral-salao " >
-            <ul class="nav nav-pills flex-column">
-            </ul>
-        </div>  
+@section( Config::get('aal.templateMasterContentTitulo' , 'titulo-page')  )
+		Adicionar novo usuario ao Perfil {{$model->nome}}			
 @endsection
 
 
-@section('content')
-
-    <section class="row text-center  titulo-pagina">
-        <div class="col-12 col-sm-12 titulo">
-			<h5>Adicionar novo usuario ao Perfil {{$model->nome}}</h5>
-        </div>        
-    </section>
+@section( Config::get('aal.templateMasterContent' , 'contentMaster')  )
 
 
     <section class="row text-center errors">

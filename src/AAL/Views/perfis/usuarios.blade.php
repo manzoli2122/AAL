@@ -1,4 +1,20 @@
-@extends('autorizacao::templates.templateAdminLateral')
+@extends( Config::get('aal.templateMaster' , 'templates.templateMaster')  )
+
+
+@section( Config::get('aal.templateMasterMenuLateral' , 'menuLateral')  )
+			
+					<li>
+						<a href="{{route('perfis.usuarios.cadastrar', $model->id ) }}"><i class="fa fa-circle-o text-blue">
+							</i><span>Adicionar Usuário</span>
+						</a>
+					</li>				
+@endsection
+
+
+
+@section( Config::get('aal.templateMasterContentTitulo' , 'titulo-page')  )
+			Usuarios do Perfil {{$model->nome}}				
+@endsection
 
 
 
@@ -17,33 +33,10 @@
 
 
 
-@section('menuLateral')
-		<div class="col-sm-3 col-md-2 menu-lateral-salao " >
-            <ul class="nav nav-pills flex-column">
-				
-                    <li class="nav-item">
-                        <a class="nav-link botao-menu-lateral" href="{{route('perfis.usuarios.cadastrar', $model->id ) }}">
-                            Adicionar Usuário
-                        </a>
-                    </li>				
-				
-            </ul>
-        </div>  
-@endsection
 
+@section( Config::get('aal.templateMasterContent' , 'contentMaster')  )
 
-
-
-
-@section('content')
-
-	<section class="row text-center  titulo-pagina">
-        <div class="col-12 col-sm-12 titulo">
-			<h5>Usuarios do Perfil {{$model->nome}}</h5>
-        </div>        
-    </section>
-
-
+	
 
 	<section class="row text-center Listagens">
         <div class="col-12 col-sm-12 lista">		
@@ -63,7 +56,7 @@
 					<tr>
 						<td>{{$user->name}}</td>						
 						<td>
-							<a href='{{route("perfis.usuarios.delete", [$model->id , $user->id])}}' class="delete"> <span class="glyphicon glyphicon-trash"></span> Deletar</a>
+							<a href='{{route("perfis.usuarios.delete", [$model->id , $user->id])}}' class="btn btn-danger btn-sm"> <span class="glyphicon glyphicon-trash"></span> Deletar</a>
 						</td>
 					</tr>
 				@empty                   

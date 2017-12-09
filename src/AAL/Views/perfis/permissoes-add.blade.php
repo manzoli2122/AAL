@@ -1,24 +1,14 @@
-@extends('autorizacao::templates.templateAdminLateral')
+@extends( Config::get('aal.templateMaster' , 'templates.templateMaster')  )
 
 
-
-@section('menuLateral')
-		<div class="col-sm-3 col-md-2 menu-lateral-salao " >
-            <ul class="nav nav-pills flex-column">
-            </ul>
-        </div>  
+@section( Config::get('aal.templateMasterContentTitulo' , 'titulo-page')  )
+			Adicionar novo Permissao ao Perfil {{$model->nome}}				
 @endsection
 
 
-@section('content')
+@section( Config::get('aal.templateMasterContent' , 'contentMaster')  )
 
-    <section class="row text-center  titulo-pagina">
-        <div class="col-12 col-sm-12 titulo">
-			<h5>Adicionar novo Permissao ao Perfil {{$model->nome}}</h5>
-        </div>        
-    </section>
-
-    
+ 
     <section class="row text-center errors">
         <div class="col-12 col-sm-12 error">
             @if(isset($errors) && count($errors)>0)
@@ -32,7 +22,7 @@
     </section>
     
     
-    <section class="row text-center formulario">
+    <section class="row  formulario">
         
         <div class="col-11 col-sm-11">
 
