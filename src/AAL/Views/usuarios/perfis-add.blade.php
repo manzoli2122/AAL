@@ -1,22 +1,14 @@
-@extends('autorizacao::templates.templateAdminLateral')
+@extends( Config::get('aal.templateMaster' , 'templates.templateMaster')  )
 
 
-
-@section('menuLateral')
-		<div class="col-sm-3 col-md-2 menu-lateral-salao " >
-            <ul class="nav nav-pills flex-column">
-            </ul>
-        </div>  
+@section( Config::get('aal.templateMasterContentTitulo' , 'titulo-page')  )
+			Adicionar novo Perfil ao usuario {{$model->name}}					
 @endsection
 
 
-@section('content')
+@section( Config::get('aal.templateMasterContent' , 'contentMaster')  )
 
-    <section class="row text-center  titulo-pagina">
-        <div class="col-12 col-sm-12 titulo">
-			<h5>Adicionar novo Perfil ao usuario {{$model->name}}</h5>
-        </div>        
-    </section>
+    
 
     <section class="row text-center errors">
         <div class="col-12 col-sm-12 error">
@@ -30,7 +22,7 @@
         </div>        
     </section>
 
-    <section class="row text-center formulario">
+    <section class="row  formulario">
         
         <div class="col-11 col-sm-11">         
 
@@ -48,7 +40,7 @@
                 </div>
 				<div class=" form-group">
                     <div class="col-md-12 col-sm-12 col-xm-12 ">
-                        {!! Form::submit('Enviar' , ['class' => 'btn btn-search']) !!}
+                        {!! Form::submit('Enviar' , ['class' => 'btn btn-success']) !!}
                     </div>
                 </div>
             {!! Form::close()!!}    

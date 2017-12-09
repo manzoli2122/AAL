@@ -1,16 +1,8 @@
-@extends('autorizacao::templates.templateAdminLateral')
-
-
-@section('menuLateral')
-		<div class="col-sm-3 col-md-2 menu-lateral-salao " >
-            <ul class="nav nav-pills flex-column">
-            </ul>
-        </div>  
-@endsection
+@extends( Config::get('aal.templateMaster' , 'templates.templateMaster')  )
 
 
 
-@section('content')
+@section( Config::get('aal.templateMasterContent' , 'contentMaster')  )
 
     <section class="row text-center  titulo-pagina">
         <div class="col-12 col-sm-12 titulo">
@@ -50,7 +42,7 @@
                         {!! Form::text('descricao', null, ['placeholder' => 'Descrição', 'class' => 'form-control col-12 col-sm-9']) !!}
                     </div>
                     <div class="form-group">
-                        {!! Form::submit('Enviar' , ['class' => 'btn btn-danger']) !!}
+                        {!! Form::submit('Enviar' , ['class' => 'btn btn-success']) !!}
                     </div>
                 {!! Form::close()!!}
         </div>   

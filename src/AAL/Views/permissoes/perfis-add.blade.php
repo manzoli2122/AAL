@@ -1,15 +1,8 @@
-@extends('autorizacao::templates.templateAdminLateral')
+@extends( Config::get('aal.templateMaster' , 'templates.templateMaster')  )
 
 
-@section('menuLateral')
-		<div class="col-sm-3 col-md-2 menu-lateral-salao " >
-            <ul class="nav nav-pills flex-column">
-            </ul>
-        </div>  
-@endsection
+@section( Config::get('aal.templateMasterContent' , 'contentMaster')  )
 
-
-@section('content')
 
     <section class="row text-center  titulo-pagina">
         <div class="col-12 col-sm-12 titulo">
