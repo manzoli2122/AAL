@@ -30,6 +30,8 @@ use Illuminate\Support\Facades\Route;
         Route::get('permissoes/{id}/perfis/cadastrar', 'PermissaoController@perfisParaAdd')->name('permissoes.perfis.cadastrar');
         Route::get('permissoes/{id}/perfis', 'PermissaoController@perfis')->name('permissoes.perfis');
         Route::any('permissoes/pesquisar', 'PermissaoController@pesquisar')->name('permissoes.pesquisar');
+        
+        Route::post('permissoes/getDatatable', 'PermissaoController@getDatatable')->name('permissoes.getDatatable');        
         Route::resource('permissoes', 'PermissaoController');
 
 

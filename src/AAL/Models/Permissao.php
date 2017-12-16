@@ -37,18 +37,10 @@ class Permissao extends Model implements AALPermissaoInterface
     }
 
 
-
-
-
-
-
-/*
-    public function perfis()
-    {        
-        return $this->belongsToMany( 'Manzoli2122\AAL\Models\Perfil' , 'permissao_perfils' , 'permissao_id', 'perfil_id');
-        
+    public function getDatatable()
+    {
+        return $this->select(['id', 'nome', 'descricao'  ]);        
     }
-*/
 
 
 }

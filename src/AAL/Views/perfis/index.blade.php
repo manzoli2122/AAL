@@ -54,7 +54,7 @@
 
 			dataTable.on('draw', function () {
 				$('[btn-excluir]').click(function (){
-					excluirRecursoPeloId($(this).data('id'), "@lang('msg.conf_excluir_o', ['1' => 'operadora'])", "{{ route('perfis.index') }}", 
+					excluirRecursoPeloId($(this).data('id'), "@lang('msg.conf_excluir_o', ['1' => 'perfis'])", "{{ route('perfis.index') }}", 
 						function(){
 							dataTable.row( $(this).parents('tr') ).remove().draw('page');
 						}
