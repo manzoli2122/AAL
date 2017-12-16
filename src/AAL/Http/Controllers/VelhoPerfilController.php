@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config; 
 use Auth;
 
-class PerfilController extends StandardDataTableController
+class PerfilController extends StandardController
 {
  
         protected $model;   
@@ -36,25 +36,6 @@ class PerfilController extends StandardDataTableController
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
         public function usuarios($id)
         {            
             $model = $this->model->find($id);

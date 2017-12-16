@@ -32,6 +32,10 @@ class Perfil extends Model implements AALPerfilInterface
     }
 
 
+    public function getDatatable()
+    {
+        return $this->select(['id', 'nome', 'descricao'  ]);        
+    }
     
     
 }
