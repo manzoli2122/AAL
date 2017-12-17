@@ -4,9 +4,9 @@ namespace Manzoli2122\AAL\Traits;
 
 //use Illuminate\Cache\TaggableStore;
 //use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Config;
+use Config;
 use InvalidArgumentException;
-
+use Cache;
 trait AALUsuarioTrait
 {
     
@@ -26,16 +26,13 @@ trait AALUsuarioTrait
 
     public function cachedPerfis()
     {
-        /*$usuarioPrimaryKey = $this->primaryKey;
-        $cacheKey = 'aal_perfis_for_usuario_'.$this->$usuarioPrimaryKey;
-        if(Cache::getStore() instanceof TaggableStore) {
-            return Cache::tags(Config::get('aal.perfil_usuario_table'))->remember($cacheKey, Config::get('cache.ttl'), function () {
-                return $this->perfis()->get();
-            });
-        }
-        else 
-        */
-        return $this->perfis()->get();
+        $usuarioPrimaryKey = $this->primaryKey;
+        $cacheKey = 'todos_perfis_para_usuario_'.$this->$usuarioPrimaryKey;
+
+        $value = Cache::rememberForever(  $cacheKey , function () {
+            return    collect([ 'perfis' => $this->perfis()->select('nome')->get()->pluck('nome')  ]) ->toJson() ;            
+        });
+        return $value ;
     }
 
     
@@ -141,8 +138,9 @@ trait AALUsuarioTrait
             }
             return $requireAll;
         } else {
-            foreach ($this->cachedPerfis() as $perfil) {
-                if ($perfil->nome == $name) {
+            $perfis  = json_decode($this->cachedPerfis())->perfis;            
+            foreach ($perfis as $perfil) {
+                if ( str_is( $perfil, $name )  ) {
                     return true;
                 }
             }
@@ -176,12 +174,10 @@ trait AALUsuarioTrait
             }
             return $requireAll;
         } else {
-            foreach ($this->cachedPerfis() as $perfil) {
-                // Validate against the Permission table
-                foreach ($perfil->cachedPermissoes() as $perm) {
-                    if (str_is( $permissao, $perm->nome) ) {
-                        return true;
-                    }
+            foreach ($this->perfis as $perfil) {
+
+                if($perfil->hasPermissao($permissao) ){
+                    return true;
                 }
             }
         }

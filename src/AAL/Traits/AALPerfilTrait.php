@@ -22,29 +22,18 @@ trait AALPerfilTrait
     }
     
    
-
+    
     public function cachedPermissoes()
     {
         $perfilPrimaryKey = $this->primaryKey;
-        $cacheKey = 'todas_permissoes_para_perfil_' . $this->$perfilPrimaryKey;
-        
+        $cacheKey = 'todas_permissoes_para_perfil_' . $this->$perfilPrimaryKey;   
+                  
         $value = Cache::rememberForever(  $cacheKey , function () {
-            return $this->permissoes()->get();
+            return    collect([ 'permissoes' => $this->permissoes()->select('nome')->get()->pluck('nome')  ]) ->toJson() ;            
+            //return json_encode(array('permissoes' => array_pluck( json_decode( $this->permissoes()->select('nome')->get() ) , 'nome'  ))) ;
         });
-        return $value;
-
-
-        /*        
-        if (Cache::getStore() instanceof TaggableStore) {
-            
-            return Cache::tags(Config::get('aal.permissao_perfil_table'))->remember($cacheKey, Config::get('cache.ttl', 60), function () {
-                return $this->permissoes()->get();
-            });
-        }        
-        return $this->permissoes()->get();
-        */
+        return $value ;
     }
-
 
 
 
@@ -153,7 +142,6 @@ trait AALPerfilTrait
         if (is_array($name)) {
             foreach ($name as $permissaoName) {
                 $hasPermissao = $this->hasPermissao($permissaoName);
-
                 if ($hasPermissao && !$requireAll) {
                     return true;
                 } elseif (!$hasPermissao && $requireAll) {
@@ -162,8 +150,9 @@ trait AALPerfilTrait
             }
             return $requireAll;
         } else {
-            foreach ($this->cachedPermissoes() as $permissao) {
-                if ($permissao->name == $name) {
+            $permissoes  = json_decode($this->cachedPermissoes())->permissoes;            
+            foreach ($permissoes as $permissao) {
+                if ( str_is( $permissao, $name )  ) {
                     return true;
                 }
             }
