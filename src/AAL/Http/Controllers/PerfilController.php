@@ -199,8 +199,7 @@ class PerfilController extends StandardDataTableController
         {            
             $dataForm = $request->except('_token');
             $model = $this->model->find($id);
-            $permissoes = $model->permissoes()->where('permissoes.nome','LIKE', "%{$dataForm['key']}%")
-                                       ->paginate($this->totalPage);           
+            $permissoes = $model->permissoes()->where('permissoes.nome','LIKE', "%{$dataForm['key']}%")->get();           
             return view("{$this->view}.permissoes", compact('model', 'dataForm', 'permissoes'));
         }
         
