@@ -2,7 +2,7 @@
 @extends( Config::get('app.templateMaster' , 'templates.templateMaster')  )
 
 @section( Config::get('app.templateMasterContentTitulo' , 'titulo-page')  )			
-		Cadastrar Perfil
+		Cadastrar Permissão
 @endsection    
 
 @section( Config::get('app.templateMasterContent' , 'content')  )
@@ -11,28 +11,28 @@
 <div class="col-md-12">
     <div class="box box-success">
 
-        <form method="post" action="{{route('perfis.store')}}">
+        <form method="post" action="{{route('permissoes.store')}}">
             
             {{csrf_field()}}
 
 
             <div class="box-body">	
                 <div class="row">
-                    <div class="col-md-12">
+                    
                     <div class="form-group {{ $errors->has('nome') ? 'has-error' : ''}}">
                         <label for="nome">Nome</label>
-                        <input type="text" class="form-control" name="nome" placeholder="Nome do Perfil"
+                        <input type="text" class="form-control" name="nome" placeholder="Nome do Permissão"
                             value="{{old('nome')}}">
                         {!! $errors->first('nome', '<p class="help-block">:message</p>') !!}
                     </div>
 
                     <div class="form-group {{ $errors->has('descricao') ? 'has-error' : ''}}">
                         <label for="descricao">Descrição</label>
-                        <input type="text" class="form-control" name="descricao" placeholder="Descrição do Perfil"
+                        <input type="text" class="form-control" name="descricao" placeholder="Descrição do Permissão"
                             value="{{old('descricao')}}">
                         {!! $errors->first('descricao', '<p class="help-block">:message</p>') !!}
                     </div>
-                    </div>
+
                 </div>
             </div>
 

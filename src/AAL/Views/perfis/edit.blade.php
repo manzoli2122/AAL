@@ -18,19 +18,20 @@
 
             <div class="box-body">	
                 <div class="row">
-                    
-                    <div class="form-group {{ $errors->has('nome') ? 'has-error' : ''}}">
-                        <label for="nome">Nome</label>
-                        <input type="text" class="form-control" name="nome" placeholder="Nome do Perfil"
-                            value="{{$model->nome or old('nome')}}">
-                        {!! $errors->first('nome', '<p class="help-block">:message</p>') !!}
-                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group {{ $errors->has('nome') ? 'has-error' : ''}}">
+                            <label for="nome">Nome</label>
+                            <input type="text" class="form-control" name="nome" placeholder="Nome do Perfil"
+                                value="{{$model->nome or old('nome')}}">
+                            {!! $errors->first('nome', '<p class="help-block">:message</p>') !!}
+                        </div>
 
-                    <div class="form-group {{ $errors->has('descricao') ? 'has-error' : ''}}">
-                        <label for="descricao">Descrição</label>
-                        <input type="text" class="form-control" name="descricao" placeholder="Descrição do Perfil"
-                            value="{{$model->descricao or old('descricao')}}">
-                        {!! $errors->first('descricao', '<p class="help-block">:message</p>') !!}
+                        <div class="form-group {{ $errors->has('descricao') ? 'has-error' : ''}}">
+                            <label for="descricao">Descrição</label>
+                            <input type="text" class="form-control" name="descricao" placeholder="Descrição do Perfil"
+                                value="{{$model->descricao or old('descricao')}}">
+                            {!! $errors->first('descricao', '<p class="help-block">:message</p>') !!}
+                        </div>
                     </div>
 
                 </div>

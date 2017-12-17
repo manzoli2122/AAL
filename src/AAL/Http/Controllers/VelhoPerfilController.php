@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config; 
 use Auth;
 
-class PerfilController extends StandardController
+class VelhoPerfilController extends StandardController
 {
  
         protected $model;   
