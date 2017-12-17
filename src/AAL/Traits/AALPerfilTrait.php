@@ -96,7 +96,9 @@ trait AALPerfilTrait
             $query->select("permissao_perfils.perfil_id");
             $query->from("permissao_perfils");
             $query->whereRaw("permissao_perfils.permissao_id = {$permissao_id} ");
-        } )->get();          
+        } )
+        ->orderBy('nome')
+        ->get();          
         
     }
 
@@ -108,7 +110,9 @@ trait AALPerfilTrait
                 $query->select("perfils_users.perfil_id");
                 $query->from("perfils_users");
                 $query->whereRaw("perfils_users.user_id = {$usuario_id} ");
-            })->get();  
+            })
+            ->orderBy('nome')
+            ->get();  
         }
         
         
@@ -117,7 +121,9 @@ trait AALPerfilTrait
                     $query->from("perfils_users");
                     $query->whereRaw("perfils_users.user_id = {$id} ");
                 })
-                ->where('nome', '<>' , 'Admin')->get();
+                ->where('nome', '<>' , 'Admin')
+                ->orderBy('nome')
+                ->get();
         
     }
 

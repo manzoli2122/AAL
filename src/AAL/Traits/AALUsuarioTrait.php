@@ -110,7 +110,9 @@ trait AALUsuarioTrait
             $query->select("perfils_users.user_id");
             $query->from("perfils_users");
             $query->whereRaw("perfils_users.perfil_id = {$perfil_id} ");
-        } )->get();       
+        } )
+        ->orderBy('name')
+        ->get();       
         
     }
     

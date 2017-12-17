@@ -35,7 +35,9 @@ trait AALPermissaoTrait
             $query->select("permissao_perfils.permissao_id");
             $query->from("permissao_perfils");
             $query->whereRaw("permissao_perfils.perfil_id = {$perfil_id} ");
-        } )->get();            
+        } )
+        ->orderBy('nome')
+        ->get();            
         
     }
 
