@@ -49,7 +49,7 @@
                     <div class="box-body">                               
                         <div class="direct-chat-msg">
                             <div class="direct-chat-info clearfix">
-								<a href='{{route("permissoes.perfis.delete", [$model->id , $perfil->id])}}' class="btn btn-danger"> <span class="glyphicon glyphicon-trash"></span> Apagar</a>                     
+								<a href='{{route("permissoes.perfis.delete", [$model->id , $perfil->id])}}' class="btn btn-danger btn-sm"> <span class="glyphicon glyphicon-trash"></span> Apagar</a>                     
                             </div>
 						</div>
                     </div>
