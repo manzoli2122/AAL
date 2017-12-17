@@ -4,13 +4,14 @@
 			Perfis com a Permissão {{$model->nome}}				
 @endsection
 
-@section( Config::get('app.templateMasterContentTituloSmall' , 'titulo-page')  )
-    {!! Form::open(['route' => ['permissoes.perfis.pesquisar', $model->id ], 'class' =>  'form-inline mt-2 mt-md-0']) !!}
-        {!! Form::text('key' , null , ['class' => 'form-control' , 'placeholder' => 'Pesquisar' ]) !!}
+@section( Config::get('app.templateMasterContentTituloSmall' , 'titulo-page')  )          
+    <form method="post" action="{{route('permissoes.perfis.pesquisar', $model->id)}}" class="form-inline mt-2 mt-md-0">
+        {{csrf_field()}}
+        <input type="text" name="key" class="form-control" placeholder="Pesquisar">
         <button class="btn btn-outline-success my-2 my-sm-0 botao-pesquisar" type="submit">
             <i class="fa fa-search" aria-hidden="true"></i>
-        </button>                   
-    {!!  Form::close()  !!}          
+        </button>
+    </form>                                  
 @endsection
 
 @section( Config::get('app.templateMasterContent' , 'contentMaster')  )
