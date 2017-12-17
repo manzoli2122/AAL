@@ -5,10 +5,11 @@ namespace  Manzoli2122\AAL\Http\Controllers;
 use Illuminate\Console\Command;
 use Illuminate\Http\Request;
 use Auth;
+use DataTables;
+use App\Constants\ErrosSQL;
+use Config;
 
-use Illuminate\Support\Facades\Config;
-
-class UserController extends Controller
+class UserController extends StandardDataTableController
 {
     
     protected $totalPage = 10;
@@ -30,22 +31,25 @@ class UserController extends Controller
     }
 
 
-    
-    public function index()
+
+
+ /**
+    * Processa a requisição AJAX do DataTable na página de listagem.
+    * Mais informações em: http://datatables.yajrabox.com
+    *
+    * @return \Illuminate\Http\JsonResponse
+    */
+    public function getDatatable()
     {
-        $users = $this->user::paginate($this->totalPage);
-        return view("{$this->view}.index", compact('users'));
+        $models = $this->model->getDatatable();
+        return Datatables::of($models)
+            ->addColumn('action', function($linha) {
+                return  '<a href="'.route("{$this->route}.perfis", $linha->id).'" class="btn btn-primary btn-xs" title="Perfis"> <i class="fa fa-pencil"></i> Perfis </a> '   ;
+            })->make(true);
     }
 
-   
-    
-    public function show($id)
-    {
-        $user = $this->user->find($id);
-        return view("{$this->view}.show", compact('user'));
-    }
 
-    
+
 
 
 
