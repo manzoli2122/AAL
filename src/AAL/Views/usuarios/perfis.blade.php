@@ -1,31 +1,18 @@
 @extends( Config::get('app.templateMaster' , 'templates.templateMaster')  )
 
-
-@section( Config::get('app.templateMasterMenuLateral' , 'menuLateral')  )			
-	@perfil('Admin')
-	<li>
-		<a href="{{route('autorizacao_users.perfis.cadastrar', $model->id ) }}"><i class="fa fa-circle-o text-blue">
-			</i><span>Adicionar Permissão</span>
-		</a>
-	</li>	
-	@endperfil				
-@endsection
-
-
-
 @section( Config::get('app.templateMasterContentTitulo' , 'titulo-page')  )
 			Perfils do {{$model->name}}				
 @endsection
 
-
-
-
-
-
 @section( Config::get('app.templateMasterContent' , 'contentMaster')  )
- 
-		@forelse($model->perfis as $perfil)
-                      
+		@perfil('Admin') 
+			<div class="col-md-12" style="margin-bottom: 20px;">		   
+               <a href="{{route('autorizacao_users.perfis.cadastrar', $model->id ) }}" class="btn btn-success">
+                    <span>Adicionar Permissão</span>
+                </a>            
+        	</div> 
+		@endperfil 
+		@forelse($model->perfis as $perfil)                      
             <div class="col-md-4">
                 <div class="box box-success">
                     <div class="box-header with-border">
@@ -42,5 +29,4 @@
             </div>                    
     	@empty
 		@endforelse  
-
 @endsection
