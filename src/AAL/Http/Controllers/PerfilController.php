@@ -197,7 +197,7 @@ class PerfilController extends StandardDataTableController
 
         
 
-        public function pesquisarPemissoes(Request $request , $id)
+        public function pesquisarPermissoes(Request $request , $id)
         {            
             $dataForm = $request->except('_token');
             $model = $this->model->find($id);

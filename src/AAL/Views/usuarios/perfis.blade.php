@@ -26,7 +26,7 @@
  
 		@forelse($model->perfis as $perfil)
                       
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="box box-success">
                     <div class="box-header with-border">
                         <h3 class="box-title">{{$perfil->nome}}</h3>                                                          

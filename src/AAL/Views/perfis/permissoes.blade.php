@@ -29,9 +29,13 @@
 
 @section( Config::get('app.templateMasterContent' , 'contentMaster')  )
  
-		@forelse($model->permissoes as $permissao)
+		 @if(!isset($permissoes))
+		    <?php $permissoes = $model->permissoes; ?>
+        @endif
+
+		@forelse($permissoes as $permissao)
                       
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="box box-success">
                     <div class="box-header with-border">
                         <h3 class="box-title">{{$permissao->nome}}</h3>                                                          

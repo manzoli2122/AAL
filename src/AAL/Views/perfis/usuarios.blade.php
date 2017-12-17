@@ -35,9 +35,11 @@
 
 @section( Config::get('app.templateMasterContent' , 'contentMaster')  )
  
+		
+
 		@forelse($users as $user)
                       
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="box box-success">
                     <div class="box-header with-border">
                         <h3 class="box-title">{{$user->name}}</h3>                                                          
