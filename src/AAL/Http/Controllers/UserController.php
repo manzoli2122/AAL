@@ -76,11 +76,13 @@ class UserController extends StandardDataTableController
     
     public function addPerfil(Request $request , $id)
     {        
-        $model = $this->user->find($id);  
-        foreach ($request->get('perfis') as  $value) {
-            $perfil = $this->perfil->find($value);
-            if( $perfil->nome != 'Admin' or Auth::user()->hasPerfil('Admin'))
-                $model->attachPerfil($value);
+        $model = $this->user->find($id);
+        if($request->get('perfis') != ''){
+            foreach ($request->get('perfis') as  $value) {
+                $perfil = $this->perfil->find($value);
+                if( $perfil->nome != 'Admin' or Auth::user()->hasPerfil('Admin'))
+                    $model->attachPerfil($value);
+            }
         }
         return redirect()->route("{$this->route}.perfis" ,$id)->with(['success' => 'Perfis vinculados com sucesso']);
     }

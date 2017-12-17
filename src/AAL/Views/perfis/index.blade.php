@@ -40,7 +40,7 @@
 	<script>
 		$(document).ready(function() {
 			var dataTable = datatablePadrao('#datatable', {
-				order: [[ 0, "asc" ]],
+				order: [[ 1, "asc" ]],
 				ajax: { 
 					url:'{{ route('perfis.getDatatable') }}'
 				},
