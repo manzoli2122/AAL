@@ -5,6 +5,8 @@ namespace  Manzoli2122\AAL\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config; 
 use Auth;
+use DataTables;
+use App\Constants\ErrosSQL;
 
 class PerfilController extends StandardDataTableController
 {

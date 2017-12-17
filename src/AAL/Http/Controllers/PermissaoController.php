@@ -4,6 +4,8 @@ namespace  Manzoli2122\AAL\Http\Controllers;
 
 use Illuminate\Http\Request; 
 use Illuminate\Support\Facades\Config; 
+use DataTables;
+use App\Constants\ErrosSQL;
 
 class PermissaoController extends StandardDataTableController
 {
