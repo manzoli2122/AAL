@@ -40,11 +40,9 @@ use Illuminate\Support\Facades\Route;
         Route::get('autorizacao_users/{id}/perfis/{perfilId}/delete', 'UserController@deletePerfil')->name('autorizacao_users.perfis.delete');
         Route::post('autorizacao_users/{id}/perfis/cadastrar', 'UserController@addPerfil')->name('autorizacao_users.perfis.add');
         Route::get('autorizacao_users/{id}/perfis/cadastrar', 'UserController@perfisParaAdd')->name('autorizacao_users.perfis.cadastrar');
-        Route::any('autorizacao_users/{id}/perfis/pesquisar', 'UserController@pesquisarPerfis')->name('autorizacao_users.perfis.pesquisar');
+        //Route::any('autorizacao_users/{id}/perfis/pesquisar', 'UserController@pesquisarPerfis')->name('autorizacao_users.perfis.pesquisar');
         Route::get('autorizacao_users/{id}/perfis', 'UserController@perfis')->name('autorizacao_users.perfis');
-        Route::any('autorizacao_users/pesquisar', 'UserController@pesquisar')->name('autorizacao_users.pesquisar');
-        
-
+        //Route::any('autorizacao_users/pesquisar', 'UserController@pesquisar')->name('autorizacao_users.pesquisar');
         
         Route::post('autorizacao_users/getDatatable', 'UserController@getDatatable')->name('autorizacao_users.getDatatable');        
         Route::resource('autorizacao_users', 'UserController')->only(['index', 'show']);

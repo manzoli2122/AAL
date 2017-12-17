@@ -52,31 +52,12 @@ class UserController extends StandardDataTableController
 
 
 
-
-
-
-    public function pesquisar(Request $request)
-    {
-        $dataForm = $request->except('_token');
-        $users = $this->user->where('name','LIKE', "%{$dataForm['key']}%")->orWhere('email',  $dataForm['key'] )->paginate($this->totalPage);     
-        return view("{$this->view}.index", compact('users', 'dataForm'));
-    }
-
-
-    
-   
-
-
-
     
     public function perfis($id)
     {        
         $model = $this->user->find($id);
         return view("{$this->view}.perfis", compact('model'));
     }
-
-
-
 
 
 

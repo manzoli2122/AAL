@@ -1,12 +1,14 @@
-@extends( Config::app('aal.templateMaster' , 'templates.templateMaster')  )
+@extends( Config::get('app.templateMaster' , 'templates.templateMaster')  )
 
 
-@section( Config::app('aal.templateMasterMenuLateral' , 'menuLateral')  )			
+@section( Config::get('app.templateMasterMenuLateral' , 'menuLateral')  )			
+	@perfil('Admin')
 	<li>
 		<a href="{{route('autorizacao_users.perfis.cadastrar', $model->id ) }}"><i class="fa fa-circle-o text-blue">
 			</i><span>Adicionar Permissão</span>
 		</a>
-	</li>				
+	</li>	
+	@endperfil				
 @endsection
 
 
@@ -18,29 +20,11 @@
 
 
 
-
-@section('pesquisar')
-	{!! Form::open(['route' => ['autorizacao_users.perfis.pesquisar', $model->id ], 'class' =>  'form-inline mt-2 mt-md-0']) !!}
-        {!! Form::text('key' , null , ['class' => 'form-control' , 'placeholder' => 'Nome' , 'style' => 'min-width: 400px;']) !!}
-		<button class="btn btn-outline-success my-2 my-sm-0 botao-pesquisar" type="submit">
-			<i class="fa fa-search" aria-hidden="true"></i>
-		</button>					
-    {!!  Form::close()  !!}		
-@endsection
-
-
-
-
 @section( Config::get('app.templateMasterContent' , 'contentMaster')  )
-
-	
-
-
-<div class="col-12 comissoes">
-	<div class="row">  
+ 
 		@forelse($model->perfis as $perfil)
                       
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="box box-success">
                     <div class="box-header with-border">
                         <h3 class="box-title">{{$perfil->nome}}</h3>                                                          
@@ -48,7 +32,7 @@
                     <div class="box-body">                               
                         <div class="direct-chat-msg">
                             <div class="direct-chat-info clearfix">
-								<a href='{{route("autorizacao_users.perfis.delete", [$model->id , $perfil->id])}}' class="btn btn-danger btn-sm"> Deletar</a>                               
+								<a href='{{route("autorizacao_users.perfis.delete", [$model->id , $perfil->id])}}' class="btn btn-danger btn-sm"> Apagar</a>                               
                             </div>
 						</div>
                     </div>
@@ -56,8 +40,5 @@
             </div>                    
     	@empty
 		@endforelse  
-    </div>
- </div>
-
 
 @endsection
