@@ -17,7 +17,7 @@
 
 
 
-@section( Config::get('aal.templateMasterContentTitulo' , 'titulo-page')  )
+@section( Config::get('app.templateMasterContentTitulo' , 'titulo-page')  )
 			Usuarios do Perfil {{$model->nome}}				
 @endsection
 

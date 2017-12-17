@@ -1,6 +1,6 @@
 @extends( Config::get('app.templateMaster' , 'templates.templateMaster')  )
 
-@section( Config::get('aal.templateMasterMenuLateral' , 'menuLateral')  )
+@section( Config::get('app.templateMasterMenuLateral' , 'menuLateral')  )
 	@perfil('Admin')		
 		<li>
 			<a href="{{route('perfis.permissoes.cadastrar', $model->id ) }}"><i class="fa fa-circle-o text-blue">
@@ -10,7 +10,7 @@
 	@endperfil				
 @endsection
 
-@section( Config::get('aal.templateMasterContentTitulo' , 'titulo-page')  )
+@section( Config::get('app.templateMasterContentTitulo' , 'titulo-page')  )
 			Permissoes do Perfil {{$model->nome}}			
 @endsection
 

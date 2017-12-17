@@ -1,28 +1,13 @@
-@extends( Config::get('aal.templateMaster' , 'templates.templateMaster')  )
+@extends( Config::get('app.templateMaster' , 'templates.templateMaster')  )
 
 
-@section( Config::get('aal.templateMasterContentTitulo' , 'titulo-page')  )
+@section( Config::get('app.templateMasterContentTitulo' , 'titulo-page')  )
 			Adicionar novo Perfil ao usuario {{$model->name}}					
 @endsection
 
 
-@section( Config::get('aal.templateMasterContent' , 'contentMaster')  )
+@section( Config::get('app.templateMasterContent' , 'contentMaster')  )
 
-    
-
-    <section class="row text-center errors">
-        <div class="col-12 col-sm-12 error">
-            @if(isset($errors) && count($errors)>0)
-                <div class="alert alert-warning">
-                    @foreach($errors->all() as $erro)
-                        <p>{{$erro}}</p>
-                    @endforeach
-                </div>
-            @endif
-        </div>        
-    </section>
-
-    <section class="row  formulario">
         
         <div class="col-11 col-sm-11">         
 
@@ -46,6 +31,5 @@
             {!! Form::close()!!}    
 			
         </div>   
-        <div class="col-1 col-sm-1 placeholder"></div>     
-    </section>
+        <div class="col-1 col-sm-1 placeholder"></div>    
 @endsection
