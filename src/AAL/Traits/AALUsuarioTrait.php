@@ -41,6 +41,11 @@ trait AALUsuarioTrait
     
 
 
+    public function getDatatable()
+    {
+        return $this->select(['id', 'name', 'email'  ]);        
+    }
+    
 
 
     public function save(array $options = [])
