@@ -44,7 +44,7 @@ class UserController extends StandardDataTableController
         $models = $this->user->getDatatable();
         return Datatables::of($models)
             ->addColumn('action', function($linha) {
-                return  '<a href="'.route("{$this->route}.perfis", $linha->id).'" class="btn btn-primary btn-xs" title="Perfis"> <i class="fa fa-pencil"></i> Perfis </a> '   ;
+                return  '<a href="'.route("{$this->route}.perfis", $linha->id).'" class="btn btn-primary btn-xs" title="Perfis"> <i class="fa fa-user"></i> Perfis </a> '   ;
             })->make(true);
     }
 
