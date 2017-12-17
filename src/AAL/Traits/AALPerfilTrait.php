@@ -3,8 +3,8 @@
 namespace Manzoli2122\AAL\Traits;
 
 //use Illuminate\Cache\TaggableStore;
-use Illuminate\Support\Facades\Config;
-//use Illuminate\Support\Facades\Cache;
+use Config;
+use Cache;
 
 trait AALPerfilTrait
 {
@@ -22,18 +22,33 @@ trait AALPerfilTrait
     }
     
    
+
     public function cachedPermissoes()
     {
-        /*$perfilPrimaryKey = $this->primaryKey;
-        $cacheKey = 'aal_permissoes_for_perfil_' . $this->$perfilPrimaryKey;
+        $perfilPrimaryKey = $this->primaryKey;
+        $cacheKey = 'todas_permissoes_para_perfil_' . $this->$perfilPrimaryKey;
+        
+        $value = Cache::rememberForever(  $cacheKey , function () {
+            return $this->permissoes()->get();
+        });
+        return $value;
+
+
+        /*        
         if (Cache::getStore() instanceof TaggableStore) {
+            
             return Cache::tags(Config::get('aal.permissao_perfil_table'))->remember($cacheKey, Config::get('cache.ttl', 60), function () {
                 return $this->permissoes()->get();
             });
-        } else 
-        */
+        }        
         return $this->permissoes()->get();
+        */
     }
+
+
+
+
+
 
     public function save(array $options = [])
     {   //both inserts and updates
