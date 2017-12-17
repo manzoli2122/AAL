@@ -50,7 +50,9 @@ class PerfilController extends StandardDataTableController
         return Datatables::of($models)
             ->addColumn('action', function($linha) {
                 return '<button data-id="'.$linha->id.'" btn-excluir type="button" class="btn btn-danger btn-xs" title="Excluir"> <i class="fa fa-times"></i> </button> '
-                    . '<a href="'.route("{$this->route}.edit", $linha->id).'" class="btn btn-primary btn-xs" title="Editar"> <i class="fa fa-pencil"></i> </a> '   ;
+                        . '<a href="'.route("{$this->route}.permissoes", $linha->id).'" class="btn btn-primary btn-xs" title="Permissões"> <i class="fa fa-pencil"></i> Permissões </a> '      
+                        . '<a href="'.route("{$this->route}.usuarios", $linha->id).'" class="btn btn-primary btn-xs" title="Usuários"> <i class="fa fa-pencil"></i> Usuários </a> '      
+                        . '<a href="'.route("{$this->route}.edit", $linha->id).'" class="btn btn-primary btn-xs" title="Editar"> <i class="fa fa-pencil"></i> </a> '   ;
             })->make(true);
     }
 
