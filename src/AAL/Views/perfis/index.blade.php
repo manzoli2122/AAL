@@ -20,10 +20,10 @@
             <table class="table table-bordered table-striped table-hover" id="datatable">
                 <thead>
                     <tr>
-						<th pesquisavel>ID</th>
+						<th pesquisavel style="max-width:30px">ID</th>
 						<th pesquisavel>Nome</th>						
 						<th>Descrição</th>						
-                        <th class="align-center" style="width:100px">Ações</th>
+                        <th class="align-center" style="width:200px">Ações</th>
                     </tr>
                 </thead>
             </table>

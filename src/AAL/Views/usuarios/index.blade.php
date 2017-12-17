@@ -16,7 +16,7 @@
 						<th pesquisavel style="max-width:30px">ID</th>
 						<th pesquisavel>Nome</th>						
 						<th>E-mail</th>						
-                        <th class="align-center" style="width:100px">Ações</th>
+                        <th class="align-center" style="width:200px">Ações</th>
                     </tr>
                 </thead>
             </table>
