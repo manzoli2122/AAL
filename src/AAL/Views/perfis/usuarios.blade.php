@@ -23,6 +23,14 @@
 
 
 
+@section( Config::get('app.templateMasterContentTituloSmall' , 'titulo-page')  )
+         {!! Form::open(['route' => ['perfis.usuarios.pesquisar', $model->id ], 'class' =>  'form-inline mt-2 mt-md-0']) !!}
+                    {!! Form::text('key' , null , ['class' => 'form-control' , 'placeholder' => 'Nome' , 'style' => 'min-width: 400px;']) !!}
+					<button class="btn btn-outline-success my-2 my-sm-0 botao-pesquisar" type="submit">
+						<i class="fa fa-search" aria-hidden="true"></i>
+					</button>					
+                {!!  Form::close()  !!}	       
+@endsection
 
 
 @section( Config::get('app.templateMasterContent' , 'contentMaster')  )
@@ -46,12 +54,7 @@
     	@empty
 		@endforelse  
 
-		{!! Form::open(['route' => ['perfis.usuarios.pesquisar', $model->id ], 'class' =>  'form-inline mt-2 mt-md-0']) !!}
-                    {!! Form::text('key' , null , ['class' => 'form-control' , 'placeholder' => 'Nome' , 'style' => 'min-width: 400px;']) !!}
-					<button class="btn btn-outline-success my-2 my-sm-0 botao-pesquisar" type="submit">
-						<i class="fa fa-search" aria-hidden="true"></i>
-					</button>					
-                {!!  Form::close()  !!}	
+		
 
 @endsection
 

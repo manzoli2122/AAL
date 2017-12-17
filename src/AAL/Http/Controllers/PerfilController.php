@@ -124,7 +124,7 @@ class PerfilController extends StandardDataTableController
         {            
             $dataForm = $request->except('_token');
             $model = $this->model->find($id);
-            $users = $model->usuarios()->where('users.name','LIKE', "%{$dataForm['key']}%")
+            $users = $model->usuarios()->where('name','LIKE', "%{$dataForm['key']}%")
                                        ->orWhere('users.email',$dataForm['key'])->get();           
             return view("{$this->view}.usuarios", compact('model', 'dataForm', 'users'));
         }
@@ -201,7 +201,7 @@ class PerfilController extends StandardDataTableController
         {            
             $dataForm = $request->except('_token');
             $model = $this->model->find($id);
-            $permissoes = $model->permissoes()->where('permissoes.nome','LIKE', "%{$dataForm['key']}%")->get();           
+            $permissoes = $model->permissoes()->where('nome','LIKE', "%{$dataForm['key']}%")->get();           
             return view("{$this->view}.permissoes", compact('model', 'dataForm', 'permissoes'));
         }
         

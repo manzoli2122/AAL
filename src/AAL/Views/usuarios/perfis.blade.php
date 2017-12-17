@@ -20,6 +20,8 @@
 
 
 
+
+
 @section( Config::get('app.templateMasterContent' , 'contentMaster')  )
  
 		@forelse($model->perfis as $perfil)
